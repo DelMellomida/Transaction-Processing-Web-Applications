@@ -1,3 +1,10 @@
+<?php
+
+require_once("../app/Model/User.php");
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
