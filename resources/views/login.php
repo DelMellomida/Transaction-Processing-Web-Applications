@@ -1,6 +1,8 @@
 <?php
 
-require_once("../app/Model/User.php");
+require_once("../app/Model/Auth.php");
+
+$user = new Auth();
 
 ?>
 
