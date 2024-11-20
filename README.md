@@ -28,7 +28,7 @@ git merge feature-branch-name
 git push
 
 ## Use built-in PHP Server
-php -S localhost:8000
+php -S localhost:8000 -t  public/
 
 ## PHP URL
 http://localhost:8000/public/index.php
