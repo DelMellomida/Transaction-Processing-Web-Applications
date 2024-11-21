@@ -65,7 +65,11 @@ class AuthController
 
             $this->auth->updateLoginTime($user['id']);
 
-            return "Login successful.";
+            $_SESSION['user_logged_in'] = true;
+
+            header("Location: http://localhost:8000/");
+            exit;
+
         } else {
             return "Incorrect password.";
         }
