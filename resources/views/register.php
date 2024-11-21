@@ -1,9 +1,14 @@
 <?php
 
-require_once("../app/Model/User.php");
+require_once("../app/Controller/AuthController.php");
+
+$message = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $authController = new AuthController();
+    $message = $authController->register($_POST);
+}
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,12 +27,33 @@ require_once("../app/Model/User.php");
             <img src="https://img.freepik.com/fotos-premium/imagen-fondo_910766-187.jpg?w=826" alt="Placeholder Image"
                 class="object-cover w-full h-full">
         </div>
-        <!-- Right: Login Form -->
+        <!-- Right: Register Form -->
         <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
             <h1 class="text-2xl font-semibold mb-4">Register</h1>
-            <form action="#" method="POST">
+            <form action="" method="POST">
+                <!-- Full Name Input -->
+                <div class="mb-4">
+                    <label for="fullname" class="block text-gray-600">Full Name</label>
+                    <input type="text" id="fullname" name="fullname"
+                        class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+                        autocomplete="off">
+                </div>
+                <!-- Address Input -->
+                <div class="mb-4">
+                    <label for="address" class="block text-gray-600">Address</label>
+                    <textarea id="address" name="address"
+                        class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+                        autocomplete="off"></textarea>
+                </div>
+                <!-- Email Input -->
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-600">Email</label>
+                    <input type="email" id="email" name="email"
+                        class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+                        autocomplete="off">
+                </div>
                 <!-- Username Input -->
-                <div class="mb-4" "bg-sky-100">
+                <div class="mb-4">
                     <label for="username" class="block text-gray-600">Username</label>
                     <input type="text" id="username" name="username"
                         class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
@@ -40,22 +66,20 @@ require_once("../app/Model/User.php");
                         class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
                         autocomplete="off">
                 </div>
-                <!-- Remember Me Checkbox -->
-                <div class="mb-4 flex items-center">
-                    <input type="checkbox" id="remember" name="remember" class="text-red-500">
-                    <label for="remember" class="text-green-900 ml-2">Remember Me</label>
+                <!-- Confirm Password Input -->
+                <div class="mb-4">
+                    <label for="confirm_password" class="block text-gray-800">Confirm Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password"
+                        class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+                        autocomplete="off">
                 </div>
-                <!-- Forgot Password Link -->
-                <div class="mb-6 text-blue-500">
-                    <a href="#" class="hover:underline">Forgot Password?</a>
-                </div>
-                <!-- Login Button -->
+                <!-- Register Button -->
                 <button type="submit"
-                    class="bg-red-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full">Login</button>
+                    class="bg-red-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full">Register</button>
             </form>
-            <!-- Sign up  Link -->
+            <!-- Login Link -->
             <div class="mt-6 text-green-500 text-center">
-                <a href="#" class="hover:underline">Sign up Here</a>
+                <a href="/login" class="hover:underline">Login Here</a>
             </div>
         </div>
     </div>

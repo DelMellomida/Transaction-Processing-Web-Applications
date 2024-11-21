@@ -1,8 +1,12 @@
 <?php
 
-require_once("../app/Model/Auth.php");
+require_once("../app/Controller/AuthController.php");
 
-$user = new Auth();
+$message = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $authController = new AuthController();
+    $message = $authController->login($_POST);
+}
 
 ?>
 
@@ -57,7 +61,7 @@ $user = new Auth();
             </form>
             <!-- Sign up  Link -->
             <div class="mt-6 text-green-500 text-center">
-                <a href="#" class="hover:underline">Sign up Here</a>
+                <a href="/register" class="hover:underline">Sign up Here</a>
             </div>
         </div>
     </div>
