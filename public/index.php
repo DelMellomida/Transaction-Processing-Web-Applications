@@ -14,24 +14,26 @@ $isLoggedIn = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] 
 </head>
 
 <body>
-
-    <?php if ($isLoggedIn): ?>
-        <div class="bg-blue-500 p-4">
-            <ul class="flex space-x-4 text-white">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/profile">Profile</a></li>
-                <li><a href="/logout">Logout</a></li>
-            </ul>
-        </div>
-    <?php endif; ?>
-
     <?php
-    if ($_SERVER['REQUEST_URI'] === '/login') {
-        include('../resources/views/login.php');
-    } elseif ($_SERVER['REQUEST_URI'] === '/register') {
-        include('../resources/views/register.php');
-    } else {
-        include('../resources/views/home.php');
+
+    switch ($_SERVER['REQUEST_URI']) {
+        case '/logout':
+            session_unset();
+            session_destroy();
+            header('Location: /');
+            exit;
+
+        case '/login':
+            include('../resources/views/login.php');
+            break;
+
+        case '/register':
+            include('../resources/views/register.php');
+            break;
+
+        default:
+            include('../resources/views/home.php');
+            break;
     }
     ?>
 
