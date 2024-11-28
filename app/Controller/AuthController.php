@@ -59,19 +59,19 @@ class AuthController
         }
 
         if (password_verify($password, $user['password'])) {
+            session_start();
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
+            $_SESSION['user_logged_in'] = true;
 
             $this->auth->updateLoginTime($user['id']);
 
-            $_SESSION['user_logged_in'] = true;
-
-            header("Location: http://localhost:8000/");
+            header("Location: http://localhost:8000/home");
             exit;
-
         } else {
             return "Incorrect password.";
         }
     }
 }
+?>

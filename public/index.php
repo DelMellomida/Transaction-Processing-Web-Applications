@@ -31,8 +31,24 @@ $isLoggedIn = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] 
             include('../resources/views/register.php');
             break;
 
-        default:
+        case '/home':
             include('../resources/views/home.php');
+            break;
+
+        case '/about':
+            include('../resources/views/about.php');
+            break;
+
+        case '/collections':
+            include('../resources/views/collections.php');
+            break;
+
+        case '/contact':
+            include('../resources/views/contact.php');
+            break;
+
+        default:
+            include('../resources/views/homeOverview.php');
             break;
     }
     ?>
