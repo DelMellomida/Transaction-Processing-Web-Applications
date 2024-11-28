@@ -1,10 +1,10 @@
 <?php
-// Start the session
-// session_start();
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 // Redirect if the user is not logged in
 if (!(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true)) {
-    header("/login");
+    header('Location: /login');
     exit;
 }
 
@@ -57,7 +57,7 @@ if (!(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true
                         <a><i class="fa-solid fa-cart-shopping"></i></a>
                         <span id="cart-count" class="cart-count">0</span>
                     </li>
-                    <li class="menu-item"><a href="index.html"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+                    <li class="menu-item"><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a></li>
                     <li class="menu hidden"><i class="fa-solid fa-bars"></i></li>
                     <li class="cancel-btn"><i class="fa-solid fa-xmark"></i></li>
                     <div id="cart-summary" class="cart-summary">
