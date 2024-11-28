@@ -8,6 +8,7 @@ if (!(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true
     exit;
 }
 
+<<<<<<< HEAD
 // require_once 'navbar.php';
 
 ?>
@@ -282,6 +283,16 @@ if (!(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true
 
     <script src="/js/myScript.js"></script>
 
+=======
+?>
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <h1>Arden Klyde Deocampo</h1>
+>>>>>>> 79964fbab6c0176eeeafd5b6527c284e92518a9d
 </body>
 
 </html>
