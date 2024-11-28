@@ -1,1 +1,2 @@
 Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it | Date/Time: 2024-11-21 15:55:42
+Error: could not find driver | Date/Time: 2024-11-28 14:45:45
