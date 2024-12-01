@@ -24,6 +24,9 @@ class Database
 
             // Step 4: Check if the `users` table exists, and create it if not
             $this->createUsersTable();
+
+            // Step 5: Create default admin account
+            $this->createDefaultAdmin();
         } catch (PDOException $e) {
             $error_message = "Database Error: " . $e->getMessage() . " | Date/Time: " . date('Y-m-d H:i:s') . "\n";
             $log_file = '../logError/logs.txt';
@@ -64,9 +67,43 @@ class Database
         }
     }
 
+    private function createDefaultAdmin()
+    {
+        try {
+            // Check if admin exists
+            $stmt = $this->conn->prepare("SELECT COUNT(*) FROM users WHERE username = :username");
+            $stmt->execute(['username' => 'admin']);
+            $exists = $stmt->fetchColumn() > 0;
+
+            if (!$exists) {
+                // Insert default admin
+                $password = password_hash('admin123', PASSWORD_DEFAULT);
+                $sql = "
+                INSERT INTO users (fullname, username, email, password, role) 
+                VALUES (:fullname, :username, :email, :password, :role)";
+
+                $stmt = $this->conn->prepare($sql);
+                $stmt->execute([
+                    'fullname' => 'Default Admin',
+                    'username' => 'admin',
+                    'email' => 'admin@example.com',
+                    'password' => $password,
+                    'role' => 'admin'
+                ]);
+
+                echo "Default admin account created successfully.\n";
+            } else {
+                echo "Admin account already exists.\n";
+            }
+        } catch (PDOException $e) {
+            throw new Exception("Failed to create default admin: " . $e->getMessage());
+        }
+    }
+
     public function getConnection()
     {
         return $this->conn;
     }
 }
+
 ?>
