@@ -47,6 +47,14 @@ $isLoggedIn = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] 
             include('../resources/views/contact.php');
             break;
 
+        case '/admin':
+            include('../resources/views/adminHome.php');
+            break;
+
+        case '/addproduct':
+            include('../resources/views/addProduct.php');
+            break;
+
         default:
             include('../resources/views/homeOverview.php');
             break;

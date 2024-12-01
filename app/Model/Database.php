@@ -27,6 +27,9 @@ class Database
 
             // Step 5: Create default admin account
             $this->createDefaultAdmin();
+
+            // Step 6: Check if the `products` table exists, and create it if not
+            $this->createProductTable();
         } catch (PDOException $e) {
             $error_message = "Database Error: " . $e->getMessage() . " | Date/Time: " . date('Y-m-d H:i:s') . "\n";
             $log_file = '../logError/logs.txt';
@@ -66,6 +69,31 @@ class Database
             throw new Exception("Failed to create users table: " . $e->getMessage());
         }
     }
+
+    private function createProductTable()
+    {
+        try {
+            $sql = "
+            CREATE TABLE IF NOT EXISTS products (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                name VARCHAR(255) NOT NULL,
+                description TEXT,
+                price DECIMAL(10, 2) NOT NULL,
+                stock INT NOT NULL DEFAULT 0,
+                category VARCHAR(100),
+                image_url VARCHAR(255),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            );
+            ";
+
+            $this->conn->exec($sql);
+            echo "Products table created successfully!";
+        } catch (PDOException $e) {
+            throw new Exception("Failed to create products table: " . $e->getMessage());
+        }
+    }
+
 
     private function createDefaultAdmin()
     {

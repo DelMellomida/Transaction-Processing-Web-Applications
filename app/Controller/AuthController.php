@@ -67,8 +67,14 @@ class AuthController
 
             $this->auth->updateLoginTime($user['id']);
 
-            header("Location: http://localhost:8000/home");
-            exit;
+            if ($_SESSION['role'] === 'admin') {
+                header("Location: http://localhost:8000/admin");
+                exit;
+            } else {
+                header("Location: http://localhost:8000/home");
+                exit;
+            }
+
         } else {
             return "Incorrect password.";
         }
