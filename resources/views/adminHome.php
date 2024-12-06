@@ -18,30 +18,47 @@ if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
+
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="/public/css/adminStyles.css">
+
+    <!-- Inline CSS Fallback -->
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
         .button {
             padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #4CAF50;
+            font-size: 18px;
             color: white;
-            border: none;
+            background-color: #007BFF;
+            text-decoration: none;
             border-radius: 5px;
         }
 
         .button:hover {
-            background-color: #45a049;
+            background-color: #0056b3;
         }
     </style>
 </head>
 
 <body>
+
+    <?php require_once __DIR__ . '/../components/adminHeader.php'; ?>
+
     <h1>Welcome, Admin</h1>
 
-    <!-- Button to redirect to addproduct form -->
-    <a href="/addproduct">
-        <button class="button">Add Product</button>
-    </a>
 </body>
 
 </html>
