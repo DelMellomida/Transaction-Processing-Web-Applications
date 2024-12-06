@@ -2,14 +2,9 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-// Redirect if the user is not logged in
-if (!(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true)) {
-    header('Location: /login');
-    exit;
-}
 
-// require_once 'navbar.php';
-
+// Check user authentication
+$is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true;
 ?>
 
 <!DOCTYPE html>
@@ -32,38 +27,14 @@ if (!(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body>
-    <!--Header Section-->
-    <header>
-        <div class="navbar stay">
-            <nav class="menu-bar">
-                <div class="logo-container">
-                    <a href="index.html"><img class="logo-design" src="/assets/logo.png"></a>
-                </div>
-                <div class="menu-item-container">
-                    <li class="menu-item"><a href="/home">Home</a></li>
-                    <li class="menu-item"><a href="/about">About</a></li>
-                    <li class="menu-item"><a href="/collections">Products</a></li>
-                    <li class="menu-item"><a href="/contact">Contact</a></li>
-                    <li class="cart-btn menu-item" onclick="toggleCartSummary()">
-                        <a><i class="fa-solid fa-cart-shopping"></i></a>
-                        <span id="cart-count" class="cart-count">0</span>
-                    </li>
-                    <li class="menu-item"><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a></li>
-                    <li class="menu hidden"><i class="fa-solid fa-bars"></i></li>
-                    <li class="cancel-btn"><i class="fa-solid fa-xmark"></i></li>
-                    <div id="cart-summary" class="cart-summary">
-                        <h2>Cart Summary</h2>
-                        <ul id="cart-items"></ul>
-                        <p>Total: Php <span id="cart-total">0.00</span></p>
-                        <button class="checkOutBtn">Checkout</button>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </header>
+
+    <?php
+    require_once __DIR__ . '/../components/header.php';
+    ?>
 
     <!--Contact Section-->
     <section class="contact">

@@ -31,10 +31,6 @@ $isLoggedIn = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] 
             include('../resources/views/register.php');
             break;
 
-        case '/home':
-            include('../resources/views/home.php');
-            break;
-
         case '/about':
             include('../resources/views/about.php');
             break;
@@ -56,7 +52,7 @@ $isLoggedIn = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] 
             break;
 
         default:
-            include('../resources/views/homeOverview.php');
+            include('../resources/views/home.php');
             break;
     }
     ?>

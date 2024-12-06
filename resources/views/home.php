@@ -2,14 +2,9 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-// Redirect if the user is not logged in
-if (!(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true)) {
-    header('Location: /login');
-    exit;
-}
 
-// require_once 'navbar.php';
-
+// Check user authentication
+$is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true;
 ?>
 
 <!DOCTYPE html>
@@ -36,35 +31,10 @@ if (!(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true
 </head>
 
 <body>
-    <!--Header Section-->
-    <header>
-        <div class="navbar stay">
-            <nav class="menu-bar">
-                <div class="logo-container">
-                    <a href="index.html"><img class="logo-design" src="/assets/logo.png"></a>
-                </div>
-                <div class="menu-item-container">
-                    <li class="menu-item"><a href="/home">Home</a></li>
-                    <li class="menu-item"><a href="/about">About</a></li>
-                    <li class="menu-item"><a href="/collections">Products</a></li>
-                    <li class="menu-item"><a href="/contact">Contact</a></li>
-                    <li class="cart-btn menu-item" onclick="toggleCartSummary()">
-                        <a><i class="fa-solid fa-cart-shopping"></i></a>
-                        <span id="cart-count" class="cart-count">0</span>
-                    </li>
-                    <li class="menu-item"><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a></li>
-                    <li class="menu hidden"><i class="fa-solid fa-bars"></i></li>
-                    <li class="cancel-btn"><i class="fa-solid fa-xmark"></i></li>
-                    <div id="cart-summary" class="cart-summary">
-                        <h2>Cart Summary</h2>
-                        <ul id="cart-items"></ul>
-                        <p>Total: Php <span id="cart-total">0.00</span></p>
-                        <button class="checkOutBtn">Checkout</button>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </header>
+
+    <?php
+    require_once __DIR__ . '/../components/header.php';
+    ?>
 
     <!-- Hero Section -->
     <div class="hero swiper">
@@ -73,21 +43,21 @@ if (!(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true
                 <img src="/assets/bgImage.jpg" alt="New Collection">
                 <div class="carousel-caption">
                     <h2>Discover Our Latest Collection</h2>
-                    <button onclick="location.href='collections.html'">Shop Now</button>
+                    <button onclick="location.href='/collections'">Shop Now</button>
                 </div>
             </div>
             <div class="carousel-item swiper-slide">
                 <img src="/assets/bgImage2.jpg" alt="Special Offer">
                 <div class="carousel-caption">
                     <h2>Exclusive Offer: 20% Off</h2>
-                    <button onclick="location.href='collections.html'">Learn More</button>
+                    <button onclick="location.href='/collections'">Learn More</button>
                 </div>
             </div>
             <div class="carousel-item swiper-slide">
                 <img src="/assets/bgImage3.jpg" alt="Gift Ideas">
                 <div class="carousel-caption">
                     <h2>Perfect Gifts for Every Occasion</h2>
-                    <button onclick="location.href='collections.html'">Browse Gifts</button>
+                    <button onclick="location.href='/collections'">Browse Gifts</button>
                 </div>
             </div>
         </div>
@@ -235,7 +205,7 @@ if (!(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true
                     recipient's door.</p>
             </div>
         </div>
-        <a href="collections.html" class="how-it-works-btn">See All Boxes</a>
+        <a href="/collections" class="how-it-works-btn">See All Boxes</a>
     </section>
 
 
@@ -246,7 +216,7 @@ if (!(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="collections.html">Products</a></li>
+                    <li><a href="/collections">Products</a></li>
                     <li><a href="home.html">Blogs</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="home.html">Privacy Policy</a></li>

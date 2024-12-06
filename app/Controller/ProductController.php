@@ -20,7 +20,6 @@ class ProductController
                 'price' => $_POST['price'],
                 'stock' => $_POST['stock'],
                 'category' => $_POST['category'],
-                // Commenting out the image upload part for now
                 // 'image_url' => $this->uploadImage($_FILES['image_url']),
             ];
 
