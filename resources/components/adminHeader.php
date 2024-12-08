@@ -1,5 +1,5 @@
 <?php
-$cssPath = __DIR__ . '/../../public/css/adminStyles.css';
+$cssPath = __DIR__ . 'css/adminStyles.css';
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +19,10 @@ $cssPath = __DIR__ . '/../../public/css/adminStyles.css';
             <div class="button-container">
                 <a href="/adminHome" class="button">Dashboard</a>
                 <a href="/addProduct" class="button">Add Product</a>
+                <a href="/allProduct" class="button">All Products</a>
                 <a href="/logout" class="button">Logout</a>
             </div>
         </nav>
     </header>
+
+</body>
