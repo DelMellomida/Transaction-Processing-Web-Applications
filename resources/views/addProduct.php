@@ -15,8 +15,8 @@ if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true 
 
 $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $authController = new ProductController();
-    $message = $authController->createProduct($_POST);
+    $productController = new ProductController();
+    $productController->createProduct($_POST);
 }
 
 ?>

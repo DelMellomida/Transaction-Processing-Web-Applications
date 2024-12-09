@@ -30,6 +30,9 @@ class Database
 
             // Step 6: Check if the `products` table exists, and create it if not
             $this->createProductTable();
+
+            // Step 7: Check if the `products` table exists, and create it if not
+            $this->createCartTable();
         } catch (PDOException $e) {
             $error_message = "Database Error: " . $e->getMessage() . " | Date/Time: " . date('Y-m-d H:i:s') . "\n";
             $log_file = '../logError/logs.txt';
@@ -91,6 +94,28 @@ class Database
             // echo "Products table created successfully!";
         } catch (PDOException $e) {
             throw new Exception("Failed to create products table: " . $e->getMessage());
+        }
+    }
+
+    private function createCartTable()
+    {
+        try {
+            $sql = "
+        CREATE TABLE IF NOT EXISTS cart (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT NOT NULL,
+            product_id INT NOT NULL,
+            quantity INT NOT NULL DEFAULT 1,
+            added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+            FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+        );
+        ";
+
+            $this->conn->exec($sql);
+            // echo "Cart table created successfully!";
+        } catch (PDOException $e) {
+            throw new Exception("Failed to create cart table: " . $e->getMessage());
         }
     }
 
