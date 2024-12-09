@@ -54,18 +54,22 @@ class ProductController
         return $targetFile; // Save relative path
     }
     */
-}
 
-// Router logic
-if (isset($_GET['action'])) {
-    $controller = new ProductController();
+    public function showProducts($data)
+    {
 
-    if ($_GET['action'] === 'createProduct') {
-        $controller->createProduct($data);
-    } else {
-        echo "Invalid action.";
+        $category = trim($data['category']);
+
+        $products = $this->product->getProducts($category);
+
+        $this->render('listProducts', ['products' => $products]);
     }
-} else {
-    echo "No action specified.";
+
+    private function render($view, $data)
+    {
+        extract($data);
+        require_once "../resources/views/{$view}.php";
+    }
 }
+
 ?>

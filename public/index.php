@@ -51,6 +51,15 @@ $isLoggedIn = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] 
             include('../resources/views/addProduct.php');
             break;
 
+        case '/allproduct':
+            require_once("../app/Controller/ProductController.php");
+            $controller = new ProductController();
+            $data = [
+                'category' => isset($_POST['category']) ? $_POST['category'] : ''
+            ];
+            $controller->showProducts($data);
+            break;
+
         default:
             include('../resources/views/home.php');
             break;

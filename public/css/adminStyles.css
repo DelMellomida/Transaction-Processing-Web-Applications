@@ -5,9 +5,6 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
 }
 
@@ -19,6 +16,12 @@ body {
   padding: 30px;
   width: 400px;
   text-align: center;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 /* Header Styles */

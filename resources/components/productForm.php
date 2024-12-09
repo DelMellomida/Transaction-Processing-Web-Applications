@@ -18,8 +18,8 @@
         <option value="Snacks">Snacks</option>
     </select><br><br>
 
-    <label for="image_url">Product Image:</label><br>
-    <input type="file" id="image_url" name="image_url" accept="image/*" required><br><br>
+    <!-- <label for="image_url">Product Image:</label><br>
+    <input type="file" id="image_url" name="image_url" accept="image/*" required><br><br> -->
 
     <button type="submit">Add Product</button>
 </form>

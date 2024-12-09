@@ -1,1 +1,4 @@
 Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it | Date/Time: 2024-12-06 16:45:47
+Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it | Date/Time: 2024-12-09 17:39:27
+Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it | Date/Time: 2024-12-09 17:40:32
+Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it | Date/Time: 2024-12-09 17:40:40

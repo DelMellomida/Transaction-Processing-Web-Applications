@@ -2,7 +2,7 @@
     <div class="navbar stay">
         <nav class="menu-bar">
             <div class="logo-container">
-                <a href="index.html"><img class="logo-design" src="/assets/logo.png"></a>
+                <a href="/home"><img class=" logo-design" src="/assets/logo.png"></a>
             </div>
             <div class="menu-item-container">
                 <li class="menu-item"><a href="/home">Home</a></li>

@@ -88,7 +88,7 @@ class Database
             ";
 
             $this->conn->exec($sql);
-            echo "Products table created successfully!";
+            // echo "Products table created successfully!";
         } catch (PDOException $e) {
             throw new Exception("Failed to create products table: " . $e->getMessage());
         }
@@ -119,9 +119,9 @@ class Database
                     'role' => 'admin'
                 ]);
 
-                echo "Default admin account created successfully.\n";
+                // echo "Default admin account created successfully.\n";
             } else {
-                echo "Admin account already exists.\n";
+                // echo "Admin account already exists.\n";
             }
         } catch (PDOException $e) {
             throw new Exception("Failed to create default admin: " . $e->getMessage());
