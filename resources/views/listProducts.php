@@ -4,10 +4,10 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Check if the user is logged in and has admin privileges
 if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true || $_SESSION['role'] !== 'admin') {
-    echo '<h1>Access Denied</h1>';
-    echo '<p>You do not have permission to view this page. Please contact your administrator if you believe this is an error.</p>';
+    // echo '<h1>Access Denied</h1>';
+    // echo '<p>You do not have permission to view this page. Please contact your administrator if you believe this is an error.</p>';
+    include_once('../resources/components/dangerAlert.php');
     exit;
 }
 
@@ -22,7 +22,6 @@ include_once("../resources/components/adminHeader.php");
 <div>
     <h1>All Products</h1>
 
-    <!-- Category Filter Form -->
     <form method="POST" action="">
         <label for="category">Filter by Category:</label>
         <select name="category" id="category">
