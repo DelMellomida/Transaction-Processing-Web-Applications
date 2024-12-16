@@ -19,6 +19,7 @@ html {
 
 body {
   position: relative;
+  
 }
 
 .navbar {
@@ -246,6 +247,7 @@ img {
   justify-content: space-evenly;
   flex-direction: row;
   width: 80%;
+  color: #000;
 }
 
 .products-categories li {
@@ -286,7 +288,6 @@ img {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
   background-color: #008080;
 }
 
@@ -691,6 +692,7 @@ footer a:link {
   height: 100%;
   transition: transform 0.5s ease-in-out;
 }
+
 
 .carousel-item {
   min-width: 100%;
@@ -1324,7 +1326,7 @@ p {
 
 .img-wrapper {
   display: block;
-  width: 98.8%;
+  width: 100%;
   height: 250px;
   border-bottom: 1px solid #333333;
   overflow: hidden;
@@ -1357,7 +1359,8 @@ p {
   transition-property: color, height;
   transition-duration: 0.3s, 0.4s;
   transition-timing-function: ease-out;
-  height: 83px;
+  height: auto;
+
 }
 
 .info:before {
@@ -1431,6 +1434,10 @@ p {
   text-align: center;
   margin-bottom: 20px;
   font-size: 13px;
+}
+
+.desc.hide {
+  z-index: 999;
 }
 
 .product:hover .desc {
@@ -1562,6 +1569,8 @@ p {
 
 .listing .product .img-wrapper img {
   display: block;
+  object-fit: cover;
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
   margin: 25px auto;
 }
 
@@ -1611,9 +1620,6 @@ p {
   position: relative;
 }
 
-.products-box {
-  width: 99%;
-}
 
 footer {
   width: 102%;
