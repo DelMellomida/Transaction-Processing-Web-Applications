@@ -6,8 +6,18 @@ $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $authController = new AuthController();
     $message = $authController->register($_POST);
+
 }
 
+if (!isset($_SESSION['register_status'])) {
+    $_SESSION['register_status'] = null;
+} else if ($_SESSION['register_status'] == true) {
+    include_once('../resources/components/successAlert.php');
+    $_SESSION['register_status'] = null;
+} else if ($_SESSION['register_status'] == false) {
+    include_once('../resources/components/dangerAlert.php');
+    $_SESSION['register_status'] = null;
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>

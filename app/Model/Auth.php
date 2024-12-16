@@ -14,7 +14,7 @@ class Auth
 
     public function createUser($data)
     {
-        $retryAttempts = 3; // Retry up to 3 times on failure
+        $retryAttempts = 3;
         $attempt = 0;
 
         while ($attempt < $retryAttempts) {
@@ -36,7 +36,7 @@ class Auth
                 ]);
 
                 $this->db->commit(); // Commit transaction
-                return "User registered successfully.";
+                return true;
             } catch (PDOException $e) {
                 $this->db->rollBack(); // Rollback transaction
 
@@ -45,12 +45,12 @@ class Auth
                     sleep(1); // Brief pause before retrying
                 } else {
                     $this->logError($e->getMessage());
-                    return "Error registering user. Please try again later.";
+                    return false;
                 }
             }
         }
 
-        return "Error registering user. Lock wait timeout exceeded.";
+        return false;
     }
 
     public function getUserByUsername($username)

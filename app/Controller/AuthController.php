@@ -34,13 +34,19 @@ class AuthController
 
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-        return $this->auth->createUser([
+        $isSuccessful = $this->auth->createUser([
             'fullname' => $fullname,
             'address' => $address,
             'email' => $email,
             'username' => $username,
             'password' => $hashedPassword,
         ]);
+
+        $_SESSION['register_status'] = $isSuccessful ? true : false;
+
+        header("Location: http://localhost:8000/register");
+        exit;
+
     }
 
     public function login($data)
