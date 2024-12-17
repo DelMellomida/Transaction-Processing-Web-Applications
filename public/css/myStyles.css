@@ -1360,7 +1360,6 @@ p {
   transition-duration: 0.3s, 0.4s;
   transition-timing-function: ease-out;
   height: auto;
-
 }
 
 .info:before {
@@ -1619,7 +1618,6 @@ p {
   width: 90%;
   position: relative;
 }
-
 
 footer {
   width: 102%;
