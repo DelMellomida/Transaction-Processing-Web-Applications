@@ -14,7 +14,7 @@ class Auth
 
     public function createUser($data)
     {
-        $retryAttempts = 3;
+        $retryAttempts = 100;
         $attempt = 0;
 
         while ($attempt < $retryAttempts) {
@@ -47,6 +47,7 @@ class Auth
                     $this->logError($e->getMessage());
                     return false;
                 }
+                return false;
             }
         }
 

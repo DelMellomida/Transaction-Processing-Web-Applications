@@ -12,9 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if (!isset($_SESSION['register_status'])) {
     $_SESSION['register_status'] = null;
 } else if ($_SESSION['register_status'] == true) {
+    $alertMessage = "Successful Register";
     include_once('../resources/components/successAlert.php');
     $_SESSION['register_status'] = null;
 } else if ($_SESSION['register_status'] == false) {
+    $alertMessage = "Unsuccessful Register";
     include_once('../resources/components/dangerAlert.php');
     $_SESSION['register_status'] = null;
 }

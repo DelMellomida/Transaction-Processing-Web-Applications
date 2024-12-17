@@ -83,15 +83,15 @@ class AuthController
 
         } else {
             $alertMessage = "Incorrect password.";
-            include_once('../resources/components/dangerAlert.php');
+            $this->renderAlert("dangerAlert", $alertMessage);
             return "Incorrect password.";
         }
     }
 
-    private function render($view, $data)
+    private function renderAlert($view, $message)
     {
-        extract($data);
-        require_once "../resources/views/{$view}.php";
+        $alertMessage = $message;
+        include_once("../resources/components/{$view}.php");
     }
 }
 ?>
