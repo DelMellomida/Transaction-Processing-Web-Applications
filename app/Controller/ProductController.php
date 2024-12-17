@@ -14,28 +14,35 @@ class ProductController
     public function createProduct($data)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $data = [
-                'name' => $_POST['name'],
-                'description' => $_POST['description'],
-                'price' => $_POST['price'],
-                'stock' => $_POST['stock'],
-                'category' => $_POST['category'],
-                // 'image_url' => $this->uploadImage($_FILES['image_url']),
-            ];
+            try {
+                $imagePath = $this->uploadImage($_FILES['image_url']);
 
-            $result = $this->product->createProduct($data);
-            echo $result;
+                $data = [
+                    'name' => $_POST['name'],
+                    'description' => $_POST['description'],
+                    'price' => $_POST['price'],
+                    'stock' => $_POST['stock'],
+                    'category' => $_POST['category'],
+                    'image_url' => $imagePath,
+                ];
+
+                $result = $this->product->createProduct($data);
+                echo $result;
+
+
+            } catch (Exception $e) {
+                echo "Error: " . $e->getMessage();
+            }
         } else {
             echo "Invalid request method.";
         }
     }
 
-    // Commenting out the image upload method for now
-    /*
     private function uploadImage($file)
     {
-        $targetDir = "/assets";
-        $targetFile = $targetDir . basename($file["name"]);
+        $targetDir = "../public/assets/";
+        $fileName = uniqid() . "-" . basename($file["name"]);
+        $targetFile = $targetDir . $fileName;
         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
         // Validate the file
@@ -47,13 +54,13 @@ class ProductController
             throw new Exception("Invalid file type. Only JPG, PNG, JPEG, and GIF are allowed.");
         }
 
+        // Move uploaded file to target directory
         if (!move_uploaded_file($file["tmp_name"], $targetFile)) {
             throw new Exception("Failed to upload image.");
         }
 
-        return $targetFile; // Save relative path
+        return "/assets/" . $fileName; // Save relative path for database storage
     }
-    */
 
     public function showProducts($data)
     {

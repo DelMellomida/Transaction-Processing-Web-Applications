@@ -87,5 +87,11 @@ class AuthController
             return "Incorrect password.";
         }
     }
+
+    private function render($view, $data)
+    {
+        extract($data);
+        require_once "../resources/views/{$view}.php";
+    }
 }
 ?>

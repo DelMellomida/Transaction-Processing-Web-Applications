@@ -19,24 +19,24 @@ class Products
         file_put_contents($log_file, $error_message, FILE_APPEND);
     }
 
-    public function createProduct($category)
+    public function createProduct($data)
     {
         try {
             $this->db->beginTransaction();
 
             $sql = "
-            INSERT INTO products(name, description, price, stock, category, image_url)
-            VALUES (:name, :description, :price, :stock, :category, :image_url);
-            ";
+        INSERT INTO products (name, description, price, stock, category, image_url)
+        VALUES (:name, :description, :price, :stock, :category, :image_url);
+        ";
 
             $stmt = $this->db->prepare($sql);
             $stmt->execute([
-                ':name' => $category['name'],
-                ':description' => $category['description'],
-                ':price' => $category['price'],
-                ':stock' => $category['stock'],
-                ':category' => $category['category'],
-                ':image_url' => $category['image_url'],
+                ':name' => $data['name'],
+                ':description' => $data['description'],
+                ':price' => $data['price'],
+                ':stock' => $data['stock'],
+                ':category' => $data['category'],
+                ':image_url' => $data['image_url'],
             ]);
 
             $this->db->commit(); // Commit transaction
