@@ -82,6 +82,8 @@ class AuthController
             }
 
         } else {
+            $alertMessage = "Incorrect password.";
+            include_once('../resources/components/dangerAlert.php');
             return "Incorrect password.";
         }
     }
