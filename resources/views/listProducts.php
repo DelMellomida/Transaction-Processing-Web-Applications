@@ -57,25 +57,6 @@ include_once("../resources/components/adminHeader.php");
         
 </form>
 
-<div class="product-container">
-    <section class="product-grid">
-        <?php if ($products && count($products) > 0): ?>
-            <?php foreach ($products as $product): ?>
-                <div class="product-card">
-                    <h3>Product: <?= htmlspecialchars($product['name']) ?></h3>
-                    <p>Description: <?= htmlspecialchars($product['description']) ?></p>
-                    <p>Price: $<?= htmlspecialchars($product['price']) ?></p>
-                    <p>Stock: <?= htmlspecialchars($product['stock']) ?></p>
-                    <p>Category: <?= htmlspecialchars($product['category']) ?></p>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>No products found.</p>
-        <?php endif; ?>
-    </section>
-</div>
-
-
 
 
 <div class="product-container">
