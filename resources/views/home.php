@@ -47,14 +47,14 @@ $is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'
                 </div>
             </div>
             <div class="carousel-item swiper-slide">
-                <img src="/assets/bgImage2.jpg" alt="Special Offer">
+                <img src="/assets/bgImage2-try.png" alt="Special Offer"> <!-- Pianlitan ko pic dito par upscaled ko kasi malabo eh from jpg to png-->
                 <div class="carousel-caption">
                     <h2>Exclusive Offer: 20% Off</h2>
                     <button onclick="location.href='/collections'">Learn More</button>
                 </div>
             </div>
             <div class="carousel-item swiper-slide">
-                <img src="/assets/bgImage3.jpg" alt="Gift Ideas">
+                <img src="/assets/bgImage3-try.png" alt="Gift Ideas"> <!-- Pianlitan ko pic dito par upscaled ko kasi malabo eh from jpg to png-->
                 <div class="carousel-caption">
                     <h2>Perfect Gifts for Every Occasion</h2>
                     <button onclick="location.href='/collections'">Browse Gifts</button>

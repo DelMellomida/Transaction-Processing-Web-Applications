@@ -12,24 +12,38 @@ if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true 
 }
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
+    <title>Admin Dashboard</title>
 
     <!-- Link to External CSS -->
     <link rel="stylesheet" href="css/adminStyles.css">
+
+    <!-- Include Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-
+    <!-- Admin Header -->
     <?php require_once __DIR__ . '/../components/adminHeader.php'; ?>
 
-    <h1>Welcome, Admin</h1>
-
+    
 </body>
 
 </html>
+
+
+
+
+
+
+

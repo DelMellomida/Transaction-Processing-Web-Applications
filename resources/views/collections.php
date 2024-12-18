@@ -141,7 +141,7 @@ $productController = new ProductController();
         $category = "Indulgent Delights";
         $products = $productController->getProducts($category);
         ?>
-        <h3>Indulgent Delights</h3>
+        <h3 class="title-delights">Indulgent Delights</h3>
         <?php if (!empty($products)): ?>
             <ul class="listing carousel">
                 <?php foreach ($products as $product): ?>
@@ -177,7 +177,7 @@ $productController = new ProductController();
     </div>
 
     <div class="products-box opposite">
-        <h3 style="padding-top: 1.5%; color: #333333" id="handcrafted">Handcrafted Luxuries</h3>
+        <h3 class="title-delights" style="padding-top: 1.5%; color: #333333" id="handcrafted">Handcrafted Luxuries</h3>
         <?php if (!empty($products)): ?>
             <ul class="listing carousel">
                 <?php foreach ($products as $product): ?>
@@ -216,7 +216,7 @@ $productController = new ProductController();
         $category = "Personalized Treasures";
         $products = $productController->getProducts($category);
         ?>
-        <h3>Personalized Treasures</h3>
+        <h3 class="title-delights" style="padding-top: 5%;" id="personalized">Personalized Treasures</h3>
         <?php if (!empty($products)): ?>
             <ul class="listing carousel">
                 <?php foreach ($products as $product): ?>
@@ -253,8 +253,8 @@ $productController = new ProductController();
 
     <!--Footer Section-->
     <footer>
-        <div class="footer-content">
-            <div class="quick-links">
+        <div class="footer-content" >
+            <div class="quick-links" >
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="about.html">About Us</a></li>
