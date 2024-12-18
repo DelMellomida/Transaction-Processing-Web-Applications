@@ -91,7 +91,7 @@ class AuthController
     public function getUser()
     {
         $user = $this->auth->getUserByUsername($_SESSION['username']);
-        $this->render("editProfile", $user);
+        return $user;
     }
 
     public function updateUser($data)
@@ -100,7 +100,7 @@ class AuthController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
                 $data = [
-                    ':username' => $_SESSION['username'],
+                    'username' => $_SESSION['username'],
                     'fullname' => $_POST['fullname'],
                     'email' => $_POST['email'],
                     'address' => $_POST['address'],
@@ -117,7 +117,7 @@ class AuthController
         }
     }
 
-    public function deleteProduct($id)
+    public function deleteUser()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
@@ -126,7 +126,11 @@ class AuthController
                 ];
 
                 $result = $this->auth->deleteUser($data);
-                $this->renderAlert("successAlert", "Successful Update");
+                // $this->renderAlert("successAlert", "Successful Update");
+                session_unset();
+                session_destroy();
+                header('Location: /');
+                exit;
 
 
             } catch (Exception $e) {

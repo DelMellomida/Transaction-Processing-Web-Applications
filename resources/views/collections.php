@@ -92,10 +92,6 @@ $productController = new ProductController();
                 <input id="card-number" class='input-field'></input>
                 <label id="card-holder-label">Card Holder</label>
                 <input id="card-holder" class='input-field'></input>
-                <label id="name-label">Name</label>
-                <input id="name" class='input-field' required></input>
-                <label id="address-label">Address</label>
-                <input id="address" class='input-field' required></input>
                 <table class='half-input-table'>
                     <tr>
                         <td> <label id="expiration-label">Expires</label>

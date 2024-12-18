@@ -90,8 +90,8 @@ class Auth
             UPDATE users
             SET fullname = :fullname,
                 email = :email,
-                address = :address,
-            WHERE username = :username
+                address = :address
+            WHERE username = :username;
         ";
 
             $stmt = $this->db->prepare($sql);
@@ -118,7 +118,7 @@ class Auth
 
             $stmt = $this->db->prepare($sql);
             $stmt->execute([
-                ':id' => $_SESSION['username'],
+                ':username' => $data['username'],
             ]);
 
             return true;

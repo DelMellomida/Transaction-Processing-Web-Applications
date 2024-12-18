@@ -3,15 +3,28 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+require_once("../app/Controller/AuthController.php");
+
+$authController = new AuthController();
 // Check user authentication
 $is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true;
-?>
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['action'])) {
+        if ($_POST['action'] === 'delete') {
+            $authController->deleteUser();
+        } elseif ($_POST['action'] === 'update') {
+            $authController->updateUser($_POST);
+        }
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/myStyles.css">
@@ -19,23 +32,29 @@ $is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'
     <title>User Profile Page</title>
     <style>
         body {
-            background-image: url('/assets/bgImage3-try.png'); 
-            background-size: cover; 
-            background-repeat: no-repeat; 
-            background-position: center; 
+            background-image: url('/assets/bgImage3-try.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
         }
     </style>
 </head>
+
 <body>
-    
+
 
     <?php
     require_once __DIR__ . '/../components/header.php';
-    require_once __DIR__ . '/../components/userProfileForm.php';
-    ?>
-   
 
-   <footer>
+    $user = $authController->getUser();
+
+    require_once __DIR__ . '/../components/userProfileForm.php';
+
+
+    ?>
+
+
+    <footer>
         <div class="footer-content">
             <div class="quick-links">
                 <h3>Quick Links</h3>
@@ -82,4 +101,5 @@ $is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'
         </div>
     </footer>
 </body>
+
 </html>

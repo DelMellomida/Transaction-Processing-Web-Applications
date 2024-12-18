@@ -10,3 +10,13 @@ Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '12
 Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '123@gmail.com' for key 'email' | Date/Time: 2024-12-17 12:41:42
 
 
+Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE username = NULL' at line 5 | Date/Time: 2024-12-18 11:50:13
+Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE username = 'pablo'' at line 5 | Date/Time: 2024-12-18 11:51:08
+Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE username = 'pablo'' at line 5 | Date/Time: 2024-12-18 11:51:36
+Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE username = 'pablo'' at line 5 | Date/Time: 2024-12-18 11:51:44
+Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE username = 'pablo'' at line 5 | Date/Time: 2024-12-18 11:52:12
+Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE username = 'pablo'' at line 5 | Date/Time: 2024-12-18 11:53:27
+Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE username = 'pablo'' at line 5 | Date/Time: 2024-12-18 11:53:32
+Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE username = 'pablo'' at line 5 | Date/Time: 2024-12-18 11:54:29
+Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE username = 'pablo'' at line 5 | Date/Time: 2024-12-18 11:54:33
+Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined | Date/Time: 2024-12-18 11:56:39
