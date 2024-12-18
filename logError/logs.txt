@@ -4,5 +4,7 @@ Database Error: SQLSTATE[HY000] [2002] No connection could be made because the t
 Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it | Date/Time: 2024-12-09 17:40:40
 Database Error: could not find driver | Date/Time: 2024-12-16 14:16:12
 Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it | Date/Time: 2024-12-16 18:22:08
+
 Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '123@gmail.com' for key 'email' | Date/Time: 2024-12-17 12:38:24
 Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '123@gmail.com' for key 'email' | Date/Time: 2024-12-17 12:41:42
+

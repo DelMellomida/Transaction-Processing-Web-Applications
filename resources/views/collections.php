@@ -132,7 +132,7 @@ $is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'
 
     <!--Product Section-->
     <div class="products-box">
-        <h3>Indulgent Delights</h3>
+        <h3 class="title-delights">Indulgent Delights</h3>
         <ul class="listing carousel">
             <li class="product">
                 <a class="img-wrapper" href="#">
@@ -143,7 +143,7 @@ $is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'
                     <div class="title">Artisanal Chocolates</div>
                     <div class="desc hide">Handcrafted by small-scale chocolatiers who emphasize quality, unique
                         flavors, and ethical sourcing using traditional methods.</div>
-                    <div class="price">Php 50.00</div>
+                    <div class="price">Php 51.00</div>
                 </div>
 
                 <div class="actions-wrapper">
@@ -245,9 +245,9 @@ $is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'
     </div>
 
     <div class="products-box opposite">
-        <h3 style="padding-top: 1.5%; color: #333333" id="handcrafted">Handcrafted Luxuries</h3>
+        <h4 class="title-delights" style="padding-top: 1.5%; font-size: 30px; color:rgb(8, 7, 7)" id="handcrafted">Handcrafted Luxuries</h4> <!-- h3 to previously kaso conflicting color sa bg -->
         <ul class="listing carousel">
-            <li class="product">
+            <li class="product"> 
                 <a class="img-wrapper" href="#">
                     <img src="/assets/candles.png" alt="Candles" />
                 </a>
@@ -387,7 +387,7 @@ $is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'
     </div>
 
     <div class="products-box">
-        <h3 style="padding-top: 1.5%;" id="personalized">Personalized Treasures</h3>
+        <h3 class="title-delights" style="padding-top: 5%;" id="personalized">Personalized Treasures</h3>
         <ul class="listing carousel">
             <li class="product">
                 <a class="img-wrapper" href="#">
@@ -495,8 +495,8 @@ $is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'
 
     <!--Footer Section-->
     <footer>
-        <div class="footer-content">
-            <div class="quick-links">
+        <div class="footer-content" >
+            <div class="quick-links" >
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="about.html">About Us</a></li>

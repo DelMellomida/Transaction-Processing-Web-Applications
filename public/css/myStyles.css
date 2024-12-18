@@ -61,6 +61,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100vw;
+  height: 5vw;
 }
 
 .menu-bar {
@@ -164,8 +165,58 @@ img {
   font-weight: 900;
 }
 
+
+
+@keyframes epeks {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.title-delights {
+    font-family: 'Cursive', 'Dancing Script', serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #f5f5f5;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 20px 0; 
+    position: relative; 
+
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
+    color: #ffffff; 
+    animation: epeks 1.5s ease-in-out;
+}
+
+
+    .title-delights::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -10px;
+        width: 1000px;
+        height: 4px;
+        background-color: #333333; /* addition */
+        transform: translateX(-50%);
+        border-radius: 2px;
+    }
+
+
+
+
+
+
 .footer-content .contact-info {
-  h3,
+  h3, 
   p {
     color: #f0f0f0;
   }
@@ -247,7 +298,6 @@ img {
   justify-content: space-evenly;
   flex-direction: row;
   width: 80%;
-  color: #000;
 }
 
 .products-categories li {
@@ -288,11 +338,14 @@ img {
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  height: 550px;
   background-color: #008080;
+  
 }
 
 .products-box.opposite {
-  background-color: #000080;
+  background-color: whitesmoke;
 }
 
 .cart-btn {
@@ -642,7 +695,7 @@ footer a:link {
   background-color: #ffffff;
   border-radius: 15px;
   width: 30%;
-  height: auto;
+  height: 300px;
 }
 
 .testimonial-wrapper .testimonial-pic {
@@ -655,7 +708,7 @@ footer a:link {
   border-radius: 50%;
   overflow: hidden;
   object-fit: cover;
-  z-index: 1;
+  z-index: 1500;
 }
 
 .testimonial-wrapper .testimonial-pic img {
@@ -767,7 +820,7 @@ footer a:link {
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
-  height: auto;
+  height: 180px;
 }
 
 .benefit-box i {
@@ -1326,7 +1379,7 @@ p {
 
 .img-wrapper {
   display: block;
-  width: 100%;
+  width: 98.8%;
   height: 250px;
   border-bottom: 1px solid #333333;
   overflow: hidden;
@@ -1346,20 +1399,22 @@ p {
 }
 
 .info {
-  width: 94.2%;
-  background: #333333;
-  color: #fff;
-  position: relative;
-  padding: 40px 10px 20px 10px;
-  text-align: center;
-  vertical-align: middle;
-  transform: translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  backface-visibility: hidden;
-  transition-property: color, height;
-  transition-duration: 0.3s, 0.4s;
-  transition-timing-function: ease-out;
-  height: auto;
+    /* width: 94.2%;*/
+    width: 98.8%;
+    background: #333333;
+    color: #fff;
+    position: relative;
+    padding: 20px 10px 20px 10px;
+    text-align: center;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    transition-property: color, height;
+    transition-duration: 0.3s, 0.4s;
+    transition-timing-function: ease-out;
+    border-radius: 0 0 10px 10px;
+    height: 120px;
 }
 
 .info:before {
@@ -1415,9 +1470,15 @@ p {
   color: inherit;
 }
 
-.product:hover .title {
+.product:hover .price, .product:hover .title {
+    opacity: 0;
+}
+
+
+/* .product:hover .title{         original to, yung nasa taas naglagay ako para mawala yung price kapag nag hohover sa prodcuts
   opacity: 0;
 }
+*/
 
 .desc {
   opacity: 0;
@@ -1435,17 +1496,13 @@ p {
   font-size: 13px;
 }
 
-.desc.hide {
-  z-index: 999;
-}
-
 .product:hover .desc {
   opacity: 1;
 }
 
 .price {
   background: #08afaf;
-  position: absolute;
+  position:absolute;
   font-size: 20px;
   padding: 4px 13px;
   top: -15px;
@@ -1568,8 +1625,6 @@ p {
 
 .listing .product .img-wrapper img {
   display: block;
-  object-fit: cover;
-  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
   margin: 25px auto;
 }
 
@@ -1612,11 +1667,16 @@ p {
 .slick-track {
   overflow-x: hidden;
   width: 80%;
+  height: 100%;
 }
 
 .listing {
   width: 90%;
   position: relative;
+}
+
+.products-box {
+  width: 99%;
 }
 
 footer {

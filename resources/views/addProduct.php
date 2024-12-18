@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php
     require_once __DIR__ . '/../components/adminHeader.php';
 
-    echo '<h1>Add New Product</h1>';
 
     require_once __DIR__ . '/../components/productForm.php';
     ?>
