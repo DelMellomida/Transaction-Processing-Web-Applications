@@ -94,6 +94,50 @@ class AuthController
         $this->render("editProfile", $user);
     }
 
+    public function updateUser($data)
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            try {
+                $data = [
+                    ':username' => $_SESSION['username'],
+                    'fullname' => $_POST['fullname'],
+                    'email' => $_POST['email'],
+                    'address' => $_POST['address'],
+                ];
+
+                $result = $this->auth->updateUser($data);
+                $this->renderAlert("successAlert", "Successful Update");
+
+            } catch (Exception $e) {
+                echo "Error: " . $e->getMessage();
+            }
+        } else {
+            $this->renderAlert("dangerAlert", "Unsuccessful Update");
+        }
+    }
+
+    public function deleteProduct($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            try {
+                $data = [
+                    'username' => $_SESSION['username'],
+                ];
+
+                $result = $this->auth->deleteUser($data);
+                $this->renderAlert("successAlert", "Successful Update");
+
+
+            } catch (Exception $e) {
+                echo "Error: " . $e->getMessage();
+            }
+        } else {
+            // echo "Invalid request method.";
+            $this->renderAlert("dangerAlert", "Unsuccessful Update");
+        }
+    }
+
     private function render($view, $data)
     {
         extract($data);
