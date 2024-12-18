@@ -96,10 +96,10 @@ $is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="our-team">
                     <div class="picture">
-                        <img class="img-fluid" src="/assets/ch1.jpg">
+                        <img class="img-fluid" src="/assets/bensing.jpg">
                     </div>
                     <div class="team-content">
-                        <h3 class="name">Sophia Lee</h3>
+                        <h3 class="name">Denmark Bensing</h3>
                         <h4 class="title">Chief Creative Officer</h4>
                     </div>
                     <ul class="social">
@@ -113,10 +113,10 @@ $is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="our-team">
                     <div class="picture">
-                        <img class="img-fluid" src="/assets/ch2.jpg">
+                        <img class="img-fluid" src="/assets/de_ocampo.jpg">
                     </div>
                     <div class="team-content">
-                        <h3 class="name">Liam Johnson</h3>
+                        <h3 class="name">Arden Klyde De Ocampo</h3>
                         <h4 class="title">Marketing Manager</h4>
                     </div>
                     <ul class="social">
@@ -130,10 +130,10 @@ $is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="our-team">
                     <div class="picture">
-                        <img class="img-fluid" src="/assets/ch3.jpg">
+                        <img class="img-fluid" src="/assets/ocariza.jpg">
                     </div>
                     <div class="team-content">
-                        <h3 class="name">Ethan Brown</h3>
+                        <h3 class="name">James Andrew Ocariza</h3>
                         <h4 class="title">Product Designer</h4>
                     </div>
                     <ul class="social">
@@ -147,11 +147,28 @@ $is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="our-team">
                     <div class="picture">
-                        <img class="img-fluid" src="/assets/ch4.jpg">
+                        <img class="img-fluid" src="/assets/mellomida.jpg">
                     </div>
                     <div class="team-content">
-                        <h3 class="name">Olivia Smith</h3>
+                        <h3 class="name">Jhondel Mellomida</h3>
                         <h4 class="title">Operations Manager</h4>
+                    </div>
+                    <ul class="social">
+                        <li><a href="https://facebook.com" class="fa-brands fa-facebook" aria-hidden="true"></a></li>
+                        <li><a href="https://twitter.com" class="fa-brands fa-twitter" aria-hidden="true"></a></li>
+                        <li><a href="https://google.com" class="fa-brands fa-google-plus-g" aria-hidden="true"></a></li>
+                        <li><a href="https://linkedin.com" class="fa-brands fa-linkedin" aria-hidden="true"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="our-team">
+                    <div class="picture">
+                        <img class="img-fluid" src="/assets/chatgpt.png">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="name">ChatGpt</h3>
+                        <h4 class="title">Product Designer</h4>
                     </div>
                     <ul class="social">
                         <li><a href="https://facebook.com" class="fa-brands fa-facebook" aria-hidden="true"></a></li>
