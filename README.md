@@ -1,4 +1,4 @@
-Arden Klyde De Ocampo \ Coder
+Arden Klyde Deocampo \ Coder
 
 Denmark Bensing \ Coder
 
