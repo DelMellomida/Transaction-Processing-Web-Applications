@@ -22,6 +22,7 @@
                 <li><a href="/admin" class="button"><i class="fas fa-tachometer-alt"></i> Home</a></li>
                 <li><a href="/addproduct" class="button" id = "btnaddprod" ><i class="fas fa-plus-circle"></i> Add Product</a></li>
                 <li><a href="/allproduct" class="button"><i class="fas fa-box"></i> All Products</a></li>
+                <li><a href="/editProduct" class="button"><i class="fas fa-edit"></i> Edit Products</a></li><br><br><br>
                 <li><a href="/logout" class="button"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </nav>

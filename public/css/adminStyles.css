@@ -264,3 +264,15 @@ input[type="text"], input[type="number"], textarea, select {
         background-color: #bbb;
     }
 
+
+    
+.no-space-div {
+    margin-top: 30px;
+    padding-left: 0px;
+    margin-left: 0;
+    gap: 50px;
+}
+
+.no-space-div button {
+    margin: 0;
+}

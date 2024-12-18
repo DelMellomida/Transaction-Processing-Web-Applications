@@ -92,6 +92,7 @@ class Products
 
     public function editProduct($data)
     {
+
         try {
             $sql = "
             UPDATE products
@@ -116,12 +117,33 @@ class Products
             ]);
 
             return true;
+            
 
         } catch (PDOException $e) {
             $this->logError($e->getMessage());
             return false;
         }
     }
+
+    public function deleteProduct($id) // di nagan awot
+    {
+    try {
+        $sql = "DELETE FROM products WHERE id = :id";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            ':id' => $id,
+        ]);
+
+        return true;
+
+    } catch (PDOException $e) {
+        $this->logError($e->getMessage());
+        return false;
+    }
+}
+
+    
 
 }
 

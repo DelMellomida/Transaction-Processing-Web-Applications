@@ -46,5 +46,12 @@
         </div>
 
     </section>
-    <br><br><button type="submit" class="submit-btn"><?= !empty($product) ? 'Update Product' : 'Add Product' ?></button>
+    <div class="no-space-div">
+    <br><button type="submit" class="submit-btn"><?= !empty($product) ? 'Update Product' : 'Add Product' ?></button><br><br>
+
+    <?php if (!empty($product)): ?>
+        <!-- DELETEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE BUTTTTTTTTTTTTTTTTTTTTTTTTTTTTTOOOOOOOOOOOOOOOOON' -->
+        <button type="submit" class="submit-btn" onclick="deleteProduct()">Delete</button>
+    <?php endif; ?>
+    </div>
 </form>
