@@ -47,11 +47,12 @@
 
     </section>
     <div class="no-space-div">
-    <br><button type="submit" class="submit-btn"><?= !empty($product) ? 'Update Product' : 'Add Product' ?></button><br><br>
+        <button type="submit" name="action" value="update" class="submit-btn">
+            <?= !empty($product) ? 'Update Product' : 'Add Product' ?>
+        </button><br><br>
 
-    <?php if (!empty($product)): ?>
-        <!-- DELETEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE BUTTTTTTTTTTTTTTTTTTTTTTTTTTTTTOOOOOOOOOOOOOOOOON' -->
-        <button type="submit" class="submit-btn" onclick="deleteProduct()">Delete</button>
-    <?php endif; ?>
+        <?php if (!empty($product)): ?>
+            <button type="submit" name="action" value="delete" class="submit-btn">Delete</button>
+        <?php endif; ?>
     </div>
 </form>

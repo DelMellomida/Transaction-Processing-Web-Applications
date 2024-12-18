@@ -20,16 +20,17 @@
         <nav>
             <ul>
                 <li><a href="/admin" class="button"><i class="fas fa-tachometer-alt"></i> Home</a></li>
-                <li><a href="/addproduct" class="button" id = "btnaddprod" ><i class="fas fa-plus-circle"></i> Add Product</a></li>
+                <li><a href="/addproduct" class="button" id="btnaddprod"><i class="fas fa-plus-circle"></i> Add
+                        Product</a></li>
                 <li><a href="/allproduct" class="button"><i class="fas fa-box"></i> All Products</a></li>
-                <li><a href="/editProduct" class="button"><i class="fas fa-edit"></i> Edit Products</a></li><br><br><br>
+                <li><a href="/editproduct" class="button"><i class="fas fa-edit"></i> Edit Products</a></li><br><br><br>
                 <li><a href="/logout" class="button"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </nav>
     </aside>
-    
+
     <div class="main-content">
-    <header id = "header">
+        <header id="header">
             <h1>Welcome, Admin</h1>
             <p>Please be mindful of what you process.</p>
         </header>
@@ -42,7 +43,7 @@
                 <li><i class="fas fa-box"></i> All Products</a></li> <br><br>
             </ul>
         </div>
-        
+
     </div>
 
     <script>
@@ -52,10 +53,10 @@
 
         addProductBtn.addEventListener("click", function () {
             if (addProductForm.style.display === "block") {
-                addProductForm.style.display = "none"; 
+                addProductForm.style.display = "none";
                 header.style.visibility = "hidden";
             } else {
-                addProductForm.style.display = "block"; 
+                addProductForm.style.display = "block";
                 header.style.visibility = "visible";
             }
         });

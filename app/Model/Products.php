@@ -40,7 +40,7 @@ class Products
             ]);
 
             $this->db->commit(); // Commit transaction
-           // echo "<script>alert('Product added successfully.');</script>";
+            // echo "<script>alert('Product added successfully.');</script>";
         } catch (PDOException $e) {
             $this->db->rollBack(); // Rollback transaction
 
@@ -117,7 +117,7 @@ class Products
             ]);
 
             return true;
-            
+
 
         } catch (PDOException $e) {
             $this->logError($e->getMessage());
@@ -125,25 +125,25 @@ class Products
         }
     }
 
-    public function deleteProduct($id) // di nagan awot
+    public function deleteProduct($data) // di nagan awot
     {
-    try {
-        $sql = "DELETE FROM products WHERE id = :id";
+        try {
+            $sql = "DELETE FROM products WHERE id = :id";
 
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([
-            ':id' => $id,
-        ]);
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([
+                ':id' => $data['id'],
+            ]);
 
-        return true;
+            return true;
 
-    } catch (PDOException $e) {
-        $this->logError($e->getMessage());
-        return false;
+        } catch (PDOException $e) {
+            $this->logError($e->getMessage());
+            return false;
+        }
     }
-}
 
-    
+
 
 }
 

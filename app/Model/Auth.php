@@ -19,7 +19,7 @@ class Auth
 
         while ($attempt < $retryAttempts) {
             try {
-                $this->db->beginTransaction(); // Start transaction
+                $this->db->beginTransaction();
 
                 $sql = "
                 INSERT INTO users (fullname, username, email, address, password)
@@ -76,6 +76,53 @@ class Auth
             $stmt->execute([':id' => $uid]);
 
             return true;
+        } catch (PDOException $e) {
+            $this->logError($e->getMessage());
+            return false;
+        }
+    }
+
+    public function updateUser($data)
+    {
+
+        try {
+            $sql = "
+            UPDATE users
+            SET fullname = :fullname,
+                email = :email,
+                address = :address,
+            WHERE username = :username
+        ";
+
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([
+                ':username' => $data['username'],
+                ':fullname' => $data['fullname'],
+                ':email' => $data['email'],
+                ':address' => $data['address'],
+            ]);
+
+            return true;
+
+
+        } catch (PDOException $e) {
+            $this->logError($e->getMessage());
+            return false;
+        }
+    }
+
+    public function deleteUser($data)
+    {
+        try {
+            $sql = "DELETE FROM users WHERE username = :username";
+
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([
+                ':id' => $_SESSION['username'],
+            ]);
+
+            return true;
+
         } catch (PDOException $e) {
             $this->logError($e->getMessage());
             return false;

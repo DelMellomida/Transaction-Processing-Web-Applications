@@ -10,7 +10,7 @@ class AuthController
     {
         $this->auth = new Auth();
     }
-
+    // Read Forms Input and Register Accounts, and conditions
     public function register($data)
     {
         $fullname = trim($data['fullname']);
@@ -48,7 +48,7 @@ class AuthController
         exit;
 
     }
-
+    // Read Forms Input and Register Accounts, and conditions
     public function login($data)
     {
         $username = trim($data['username']);
@@ -68,7 +68,7 @@ class AuthController
             session_start();
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
-            $_SESSION['role'] = $user['role'];
+            $_SESSION['role'] = $user['role']; //For Role-based acces control Line 76-82
             $_SESSION['user_logged_in'] = true;
 
             $this->auth->updateLoginTime($user['id']);
@@ -86,6 +86,62 @@ class AuthController
             $this->renderAlert("dangerAlert", $alertMessage);
             return "Incorrect password.";
         }
+    }
+
+    public function getUser()
+    {
+        $user = $this->auth->getUserByUsername($_SESSION['username']);
+        $this->render("editProfile", $user);
+    }
+
+    public function updateUser($data)
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            try {
+                $data = [
+                    ':username' => $_SESSION['username'],
+                    'fullname' => $_POST['fullname'],
+                    'email' => $_POST['email'],
+                    'address' => $_POST['address'],
+                ];
+
+                $result = $this->auth->updateUser($data);
+                $this->renderAlert("successAlert", "Successful Update");
+
+            } catch (Exception $e) {
+                echo "Error: " . $e->getMessage();
+            }
+        } else {
+            $this->renderAlert("dangerAlert", "Unsuccessful Update");
+        }
+    }
+
+    public function deleteProduct($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            try {
+                $data = [
+                    'username' => $_SESSION['username'],
+                ];
+
+                $result = $this->auth->deleteUser($data);
+                $this->renderAlert("successAlert", "Successful Update");
+
+
+            } catch (Exception $e) {
+                echo "Error: " . $e->getMessage();
+            }
+        } else {
+            // echo "Invalid request method.";
+            $this->renderAlert("dangerAlert", "Unsuccessful Update");
+        }
+    }
+
+    private function render($view, $data)
+    {
+        extract($data);
+        require_once "../resources/views/{$view}.php";
     }
 
     private function renderAlert($view, $message)
