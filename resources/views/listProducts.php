@@ -67,7 +67,7 @@ include_once("../resources/components/adminHeader.php");
                     <p>Price: $<?= htmlspecialchars($product['price']) ?></p>
                     <p>Stock: <?= htmlspecialchars($product['stock']) ?></p>
                     <p>Category: <?= htmlspecialchars($product['category']) ?></p>
-                    <img src=<?= htmlspecialchars($product['image_url']) ?>>
+                    <img src=<?= htmlspecialchars($product['image_url']) ?>> <!-- eto yung picture -->
                 </div>
             <?php endforeach; ?>
         <?php else: ?>

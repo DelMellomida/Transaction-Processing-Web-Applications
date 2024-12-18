@@ -32,9 +32,9 @@
                 <div class="card">
                 <h3>Category</h3> <br>
                     <select id="category" name="category" required>
-                        <option value="Coffee">Coffee</option>
-                        <option value="Tea">Tea</option>
-                        <option value="Snacks">Snacks</option>
+                        <option value="Indulgent Delights">Indulgent Delights</option>
+                        <option value="Handcrafted Luxuries">Handcrafted Luxuries</option>
+                        <option value="Personalized Treasures">Personalized Treasures</option>
                     </select><br><br>
                 </div>
                 <div class="card">
@@ -50,8 +50,8 @@
                 <textarea id="description" name="description" rows="4" required></textarea>
                 </div>
                 <div class="card">
-                <label for="image_url">Product Image:</label><br> 
-                <input type="file" name="image_url" id="image_url" accept="image/*" required><br><br>
+                <label for="image_url">Product Image:</label><br> <br><br>
+                <input type="file" name="image_url" id="image_url" accept="image/*" required>
                 </div>
 
 
