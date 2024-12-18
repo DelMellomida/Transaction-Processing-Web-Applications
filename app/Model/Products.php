@@ -71,6 +71,24 @@ class Products
         }
 
     }
+
+    public function getProduct($id)
+    {
+        try {
+            if (!isset($id) || $id === "") {
+                return [];
+            } else {
+                $sql = "SELECT * FROM products WHERE id=:id";
+                $stmt = $this->db->prepare($sql);
+                $stmt->execute([":id" => $id]);
+
+                return $stmt->fetch(PDO::FETCH_ASSOC);
+            }
+        } catch (PDOException $e) {
+            $this->logError($e->getMessage());
+            return null;
+        }
+    }
 }
 
 ?>

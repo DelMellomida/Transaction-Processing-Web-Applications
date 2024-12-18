@@ -27,7 +27,7 @@ class ProductController
                 ];
 
                 $result = $this->product->createProduct($data);
-                echo $result;
+                // echo $result;
 
 
             } catch (Exception $e) {
@@ -77,6 +77,32 @@ class ProductController
         $products = $this->product->getProducts($category);
         return $products;
     }
+
+    public function getProduct()
+    {
+        if (isset($_SESSION['product_id']) && !empty($_SESSION['product_id'])) {
+            $id = $_SESSION['product_id'];
+
+            try {
+                $productItem = $this->product->getProduct($id);
+
+                if ($productItem && is_array($productItem)) {
+                    $_SESSION['product_id'] = null;  // Clear after fetching
+                    return $productItem;
+                } else {
+                    throw new Exception("Product not found.");
+                }
+            } catch (Exception $e) {
+                echo "Error: " . $e->getMessage();
+                return [];  // Return an empty array instead of null
+            }
+        } else {
+            echo "No product ID found in the session.";
+            return [];
+        }
+    }
+
+
 
     private function render($view, $data)
     {

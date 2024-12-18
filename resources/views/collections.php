@@ -253,8 +253,8 @@ $productController = new ProductController();
 
     <!--Footer Section-->
     <footer>
-        <div class="footer-content" >
-            <div class="quick-links" >
+        <div class="footer-content">
+            <div class="quick-links">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="about.html">About Us</a></li>
