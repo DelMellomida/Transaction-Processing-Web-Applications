@@ -40,7 +40,7 @@ class Products
             ]);
 
             $this->db->commit(); // Commit transaction
-            return "Product added successfully.";
+           // echo "<script>alert('Product added successfully.');</script>";
         } catch (PDOException $e) {
             $this->db->rollBack(); // Rollback transaction
 

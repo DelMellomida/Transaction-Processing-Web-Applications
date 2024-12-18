@@ -53,8 +53,6 @@
                 <label for="image_url">Product Image:</label><br> <br><br>
                 <input type="file" name="image_url" id="image_url" accept="image/*" required>
                 </div>
-
-
      </section>
      <br><br><button type="submit" class="submit-btn">Add Product</button>
 </form>
