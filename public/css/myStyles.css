@@ -19,6 +19,7 @@ html {
 
 body {
   position: relative;
+  
 }
 
 .navbar {
@@ -695,7 +696,7 @@ footer a:link {
   border-radius: 50%;
   overflow: hidden;
   object-fit: cover;
-  z-index: 1500;
+  z-index: 1;
 }
 
 .testimonial-wrapper .testimonial-pic img {
@@ -1992,17 +1993,17 @@ option {
   align-items: center;
   height: 100vh;
   padding-left: 100px;
+  padding-top: 100px;
 }
 .profile-container {
   max-width: 1000px;
   background: #ffffff;
   margin: 50px, 0px, 0px, 0px auto;
-  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 .profile-header {
-  background-color: #4caf50;
+  background-color: #08afaf;
   color: white;
   text-align: center;
   padding: 20px;
@@ -2028,7 +2029,6 @@ option {
   color: #333;
   font-weight: 150px;
   font-size: 4vw;
-  text-shadow: 5px 5px gray;
 }
 .profile-details ul {
   list-style-type: none;
@@ -2046,4 +2046,8 @@ option {
 .profile-details ul li span {
   font-weight: bold;
   color: #555;
+}
+.no-space-div{
+  display: flex;
+  justify-content: space-between;
 }

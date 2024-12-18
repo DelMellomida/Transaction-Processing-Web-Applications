@@ -20,3 +20,11 @@ Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error
 Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE username = 'pablo'' at line 5 | Date/Time: 2024-12-18 11:54:29
 Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE username = 'pablo'' at line 5 | Date/Time: 2024-12-18 11:54:33
 Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined | Date/Time: 2024-12-18 11:56:39
+Database Error: could not find driver | Date/Time: 2024-12-18 11:08:37
+Database Error: could not find driver | Date/Time: 2024-12-18 11:13:31
+Database Error: could not find driver | Date/Time: 2024-12-18 12:46:33
+Database Error: could not find driver | Date/Time: 2024-12-18 12:46:39
+Database Error: could not find driver | Date/Time: 2024-12-18 12:46:53
+Database Error: could not find driver | Date/Time: 2024-12-18 12:48:29
+Database Error: could not find driver | Date/Time: 2024-12-18 12:48:34
+Database Error: could not find driver | Date/Time: 2024-12-18 12:48:51
