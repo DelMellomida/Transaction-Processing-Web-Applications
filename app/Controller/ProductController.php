@@ -72,6 +72,12 @@ class ProductController
         $this->render('listProducts', ['products' => $products]);
     }
 
+    public function getProducts($category)
+    {
+        $products = $this->product->getProducts($category);
+        return $products;
+    }
+
     private function render($view, $data)
     {
         extract($data);

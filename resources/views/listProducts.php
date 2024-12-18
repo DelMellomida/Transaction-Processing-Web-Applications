@@ -30,14 +30,12 @@ include_once("../resources/components/adminHeader.php");
 <form method="POST" action="">
 <section class="overview">
     <div class="card">
-        <h3>Filter by Category</h3> <br>
-        <select name="category" id="category">
+        <h3>Filter by Category</h3> <br> <!-- <label for="category">Filter by Category:</label> -->
+        <select id="category" name="category" required>
             <option value="">-- All Categories --</option>
-            <option value="Tea">Tea</option>
-            <option value="Books">Books</option>
-            <option value="Clothing">Clothing</option>
-            <option value="Toys">Toys</option>
-            <option value="Home">Home</option>
+            <option value="Indulgent Delights">Indulgent Delights</option>
+            <option value="Handcrafted Luxuries">Handcrafted Luxuries</option>
+            <option value="Personalized Treasures">Personalized Treasures</option>
         </select>
     </div>   
 </section>

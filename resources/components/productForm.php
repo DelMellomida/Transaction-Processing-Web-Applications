@@ -15,10 +15,11 @@
 
     <label for="category">Category:</label><br>
     <select id="category" name="category" required>
-        <option value="Coffee">Coffee</option>
-        <option value="Tea">Tea</option>
-        <option value="Snacks">Snacks</option>
+        <option value="Indulgent Delights">Indulgent Delights</option>
+        <option value="Handcrafted Luxuries">Handcrafted Luxuries</option>
+        <option value="Personalized Treasures">Personalized Treasures</option>
     </select><br><br>
+<<<<<<< HEAD
     -->
     <!-- <label for="image_url">Product Image:</label><br>
     <input type="file" id="image_url" name="image_url" accept="image/*" required><br><br> -->
@@ -48,7 +49,12 @@
                 <h3>Description</h3> 
                 <textarea id="description" name="description" rows="4" required></textarea>
                 </div>
+                <div class="card">
+                <label for="image_url">Product Image:</label><br> 
+                <input type="file" name="image_url" id="image_url" accept="image/*" required><br><br>
+                </div>
+
+
      </section>
      <br><br><button type="submit" class="submit-btn">Add Product</button>
-     
 </form>
