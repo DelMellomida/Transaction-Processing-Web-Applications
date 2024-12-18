@@ -139,7 +139,7 @@ class ProductController
                 ];
 
                 $result = $this->product->deleteProduct($data);
-                $this->renderAlert("successAlert", "Successful Update");
+                $this->renderAlert("successAlert", "Successful Delete");
 
 
             } catch (Exception $e) {
@@ -147,7 +147,7 @@ class ProductController
             }
         } else {
             // echo "Invalid request method.";
-            $this->renderAlert("dangerAlert", "Unsuccessful Update");
+            $this->renderAlert("dangerAlert", "Unsuccessful Delete");
         }
     }
 

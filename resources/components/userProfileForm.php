@@ -29,7 +29,7 @@
                     </ul>
                     <div class="no-space-div">
                         <button type="submit" name="action" value="update" class="submit-btn">
-                            <?= !empty($user) ? 'Update Product' : '' ?>
+                            <?= !empty($user) ? 'Update User' : '' ?>
                         </button><br><br>
 
                         <?php if (!empty($user)): ?>

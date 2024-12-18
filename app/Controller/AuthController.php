@@ -61,6 +61,7 @@ class AuthController
         $user = $this->auth->getUserByUsername($username);
 
         if (!$user) {
+            $this->renderAlert("dangerAlert", "No User Exists");
             return "User does not exist.";
         }
 

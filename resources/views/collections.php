@@ -124,7 +124,7 @@ $productController = new ProductController();
         <h1 style="padding-top: 1.5%;">Products</h1>
         <nav class="products-categories">
             <ul>
-                <li><a href="#indulgent">Indulgent Delights</a></li>
+                <li><a style="color:black;" href="#indulgent">Indulgent Delights</a></li>
                 <li><a href="#handcrafted">Handcrafted Luxuries</a></li>
                 <li><a href="#personalized">Personalized Treasures</a></li>
             </ul>
@@ -172,8 +172,8 @@ $productController = new ProductController();
         </ul>
     </div>
 
-    <div class="products-box opposite">
-        <h3 class="title-delights" style="padding-top: 1.5%; color: #333333" id="handcrafted">Handcrafted Luxuries</h3>
+    <div class="products-box opposite" style="background-color: #333333;">
+        <h3 class="title-delights" style="padding-top: 1.5%; color: black;" id="handcrafted">Handcrafted Luxuries</h3>
         <?php if (!empty($products)): ?>
             <ul class="listing carousel">
                 <?php foreach ($products as $product): ?>
