@@ -1,3 +1,10 @@
+Arden Klyde De Ocampo \ Coder
+Denmark Bensing \ Coder
+James Andrew Ocariza \ Coder
+Jhondel Mellomida \ Coder
+
+2024-12-18
+
 # Transaction-Processing-Web-Applications
 
 ## To get a copy of the application
