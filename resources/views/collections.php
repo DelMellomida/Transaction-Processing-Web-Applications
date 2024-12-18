@@ -1,10 +1,15 @@
 <?php
+
+require_once("../app/Controller/ProductController.php");
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
 // Check user authentication
 $is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true;
+
+$productController = new ProductController();
 ?>
 
 <!DOCTYPE html>
@@ -132,363 +137,116 @@ $is_logged_in = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'
 
     <!--Product Section-->
     <div class="products-box">
+        <?php
+        $category = "Indulgent Delights";
+        $products = $productController->getProducts($category);
+        ?>
         <h3>Indulgent Delights</h3>
-        <ul class="listing carousel">
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/chocolates.png" alt="Chocolate" />
-                </a>
+        <?php if (!empty($products)): ?>
+            <ul class="listing carousel">
+                <?php foreach ($products as $product): ?>
+                    <li class="product">
+                        <a class="img-wrapper" href="#">
+                            <!-- Dynamically display the product image -->
+                            <img src="<?= $product['image_url']; ?>" alt="<?= htmlspecialchars($product['name']); ?>" />
+                        </a>
 
-                <div class="info">
-                    <div class="title">Artisanal Chocolates</div>
-                    <div class="desc hide">Handcrafted by small-scale chocolatiers who emphasize quality, unique
-                        flavors, and ethical sourcing using traditional methods.</div>
-                    <div class="price">Php 50.00</div>
-                </div>
+                        <div class="info">
+                            <!-- Dynamically display the product title -->
+                            <div class="title"><?= htmlspecialchars($product['name']); ?></div>
 
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/coffee.png" alt="Coffee" />
-                </a>
-                <div class="note no-stock">Out of stock</div>
+                            <!-- Dynamically display the product description -->
+                            <div class="desc hide"><?= htmlspecialchars($product['description']); ?></div>
 
-                <div class="info">
-                    <div class="title">Special Coffee</div>
-                    <div class="desc hide">Specialty coffee: meticulously sourced, roasted, and brewed, offering unique
-                        flavors; 250 grams.</div>
-                    <div class="price">Php 150.00</div>
-                </div>
+                            <!-- Dynamically display the product price -->
+                            <div class="price">Php <?= number_format($product['price'], 2); ?></div>
+                        </div>
 
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/snacks.png" alt="Snacks" />
-                </a>
-                <div class="note on-sale">On sale</div>
-
-                <div class="info">
-                    <div class="title"><a href="#">Gourmet Snacks</a></div>
-                    <div class="desc hide">Gourmet snacks: handpicked ingredients, artisanal crafting, delivering
-                        exquisite taste; 150g of mixed nuts.</div>
-                    <div class="price sale">Php 100.00</div>
-                    <div class="price old">Php 120.00</div>
-                </div>
-
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/baked.png" alt="baked" />
-                </a>
-
-                <div class="info">
-                    <div class="title">Baked Goods</div>
-                    <div class="desc hide">Baked goods: Freshly baked pastries crafted with care, featuring a variety of
-                        flavors and textures.</div>
-                    <div class="price">Php 120.00</div>
-                </div>
-
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/jam.png" alt="Jam" />
-                </a>
-
-                <div class="info">
-                    <div class="title">Artisanal Jam</div>
-                    <div class="desc hide">Artisanal jam: Handmade with ripe, luscious fruits and natural ingredients,
-                        bursting with vibrant flavors.</div>
-                    <div class="price">Php 90.00</div>
-                </div>
-
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/wine.png" alt="Premium Alcohol" />
-                </a>
-                <div class="note on-sale">On sale</div>
-
-                <div class="info">
-                    <div class="title"><a href="#">Premium Alcohol</a></div>
-                    <div class="desc hide">Premium alcohol: Indulge in rich, complex flavors with our meticulously aged
-                        whiskey, perfect for savoring slowly.</div>
-                    <div class="price sale">Php 500.00</div>
-                    <div class="price old">Php 600.00</div>
-                </div>
-
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
+                        <div class="actions-wrapper">
+                            <!-- Wishlist and Cart buttons -->
+                            <a href="#" class="add-btn wishlist">Wishlist</a>
+                            <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="no-products">No products found in this category.</div>
+            <?php endif; ?>
             </li>
         </ul>
     </div>
 
     <div class="products-box opposite">
         <h3 style="padding-top: 1.5%; color: #333333" id="handcrafted">Handcrafted Luxuries</h3>
-        <ul class="listing carousel">
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/candles.png" alt="Candles" />
-                </a>
+        <?php if (!empty($products)): ?>
+            <ul class="listing carousel">
+                <?php foreach ($products as $product): ?>
+                    <li class="product">
+                        <a class="img-wrapper" href="#">
+                            <!-- Dynamically display the product image -->
+                            <img src="<?= $product['image_url']; ?>" alt="<?= htmlspecialchars($product['name']); ?>" />
+                        </a>
 
-                <div class="info">
-                    <div class="title">Handcrafted Candles</div>
-                    <div class="desc hide">Handcrafted candles: Premium soy wax, infused with essential oils, emitting
-                        calming fragrances.</div>
-                    <div class="price">Php 120.00</div>
-                </div>
+                        <div class="info">
+                            <!-- Dynamically display the product title -->
+                            <div class="title"><?= htmlspecialchars($product['name']); ?></div>
 
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/bath.png" alt="Luxury Bath Products" />
-                </a>
+                            <!-- Dynamically display the product description -->
+                            <div class="desc hide"><?= htmlspecialchars($product['description']); ?></div>
 
-                <div class="info">
-                    <div class="title">Luxury Bath Products</div>
-                    <div class="desc hide">Luxury bath products: Handcrafted with nourishing ingredients, providing a
-                        lavish bathing experience.</div>
-                    <div class="price">Php 280.00</div>
-                </div>
+                            <!-- Dynamically display the product price -->
+                            <div class="price">Php <?= number_format($product['price'], 2); ?></div>
+                        </div>
 
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/soap.png" alt="Scented Soaps" />
-                </a>
-
-                <div class="info">
-                    <div class="title">Scented Soaps</div>
-                    <div class="desc hide">Scented soaps: Handcrafted with natural oils, leaving skin refreshed and
-                        delicately scented.</div>
-                    <div class="price">Php 90.00</div>
-                </div>
-
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/succulent.png" alt="Miniature Succulents" />
-                </a>
-
-                <div class="info">
-                    <div class="title">Miniature Succulents</div>
-                    <div class="desc hide">Miniature succulents: Handpicked varieties, perfect for small spaces, adding
-                        greenery to any room.</div>
-                    <div class="price">Php 150.00</div>
-                </div>
-
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/jewelry.png" alt="Handmade Jewelry" />
-                </a>
-
-                <div class="info">
-                    <div class="title">Handmade Jewelry</div>
-                    <div class="desc hide">Handmade jewelry: Unique designs, crafted with attention to detail, making
-                        each piece special.</div>
-                    <div class="price">Php 200.00</div>
-                </div>
-
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/skincare.png" alt="Organic Skincare" />
-                </a>
-
-                <div class="info">
-                    <div class="title">Organic Skincare</div>
-                    <div class="desc hide">Organic skincare: Handcrafted with natural ingredients, nurturing and
-                        rejuvenating skin.</div>
-                    <div class="price">Php 180.00</div>
-                </div>
-
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/waxmelts.png" alt="Handpoured Waxmelts" />
-                </a>
-
-                <div class="info">
-                    <div class="title">Handpoured Waxmelts</div>
-                    <div class="desc hide">Handpoured waxmelts: Aromatic blends, created to enhance ambiance and
-                        relaxation.</div>
-                    <div class="price">Php 75.00</div>
-                </div>
-
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/planter.png" alt="Unique Planter" />
-                </a>
-
-                <div class="info">
-                    <div class="title">Unique Planter</div>
-                    <div class="desc hide">Unique planter: Handcrafted designs, adding personality to indoor and outdoor
-                        spaces.</div>
-                    <div class="price">Php 160.00</div>
-                </div>
-
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
+                        <div class="actions-wrapper">
+                            <!-- Wishlist and Cart buttons -->
+                            <a href="#" class="add-btn wishlist">Wishlist</a>
+                            <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="no-products">No products found in this category.</div>
+            <?php endif; ?>
         </ul>
     </div>
 
     <div class="products-box">
-        <h3 style="padding-top: 1.5%;" id="personalized">Personalized Treasures</h3>
-        <ul class="listing carousel">
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/notecards.png" alt="Personalized Notecards" />
-                </a>
+        <?php
+        $category = "Personalized Treasures";
+        $products = $productController->getProducts($category);
+        ?>
+        <h3>Personalized Treasures</h3>
+        <?php if (!empty($products)): ?>
+            <ul class="listing carousel">
+                <?php foreach ($products as $product): ?>
+                    <li class="product">
+                        <a class="img-wrapper" href="#">
+                            <!-- Dynamically display the product image -->
+                            <img src="<?= $product['image_url']; ?>" alt="<?= htmlspecialchars($product['name']); ?>" />
+                        </a>
 
-                <div class="info">
-                    <div class="title">Personalized Notecards</div>
-                    <div class="desc hide">Personalized notecards: Custom designs, perfect for adding a personal touch
-                        to your messages.</div>
-                    <div class="price">Php 50.00</div>
-                </div>
+                        <div class="info">
+                            <!-- Dynamically display the product title -->
+                            <div class="title"><?= htmlspecialchars($product['name']); ?></div>
 
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/stationary.png" alt="Custom Stationary" />
-                </a>
+                            <!-- Dynamically display the product description -->
+                            <div class="desc hide"><?= htmlspecialchars($product['description']); ?></div>
 
-                <div class="info">
-                    <div class="title">Custom Stationary</div>
-                    <div class="desc hide">Custom stationary: Personalized designs, ideal for expressing your unique
-                        style in writing.</div>
-                    <div class="price">Php 80.00</div>
-                </div>
+                            <!-- Dynamically display the product price -->
+                            <div class="price">Php <?= number_format($product['price'], 2); ?></div>
+                        </div>
 
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/mug.png" alt="Customized Mugs" />
-                </a>
-
-                <div class="info">
-                    <div class="title">Customized Mugs</div>
-                    <div class="desc hide">Customized mugs: Personalized with your favorite photos or quotes, making
-                        your mornings brighter.</div>
-                    <div class="price">Php 100.00</div>
-                </div>
-
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/case.png" alt="Customized Phone Case" />
-                </a>
-
-                <div class="info">
-                    <div class="title">Customized Phone Case</div>
-                    <div class="desc hide">Customized phone case: Personalized protection for your device, reflecting
-                        your style and personality.</div>
-                    <div class="price">Php 120.00</div>
-                </div>
-
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/frame.png" alt="Photo Frame" />
-                </a>
-
-                <div class="info">
-                    <div class="title">Photo Frame</div>
-                    <div class="desc hide">Photo frame: Elegant designs, perfect for displaying your cherished memories
-                        in style.</div>
-                    <div class="price">Php 150.00</div>
-                </div>
-
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
-            </li>
-            <li class="product">
-                <a class="img-wrapper" href="#">
-                    <img src="/assets/keychain.png" alt="Engraved Keychains" />
-                </a>
-                <div class="info">
-                    <div class="title">Engraved Keychains</div>
-                    <div class="desc hide">Engraved keychains: Personalized with names or messages, perfect for adding a
-                        special touch to your keys.</div>
-                    <div class="price">Php 70.00</div>
-                </div>
-
-                <div class="actions-wrapper">
-                    <a href="#" class="add-btn wishlist">Wishlist</a>
-                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
-                </div>
+                        <div class="actions-wrapper">
+                            <!-- Wishlist and Cart buttons -->
+                            <a href="#" class="add-btn wishlist">Wishlist</a>
+                            <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="no-products">No products found in this category.</div>
+            <?php endif; ?>
             </li>
         </ul>
     </div>

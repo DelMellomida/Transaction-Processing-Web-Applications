@@ -33,6 +33,8 @@ class Database
 
             // Step 7: Check if the `products` table exists, and create it if not
             $this->createCartTable();
+
+            $this->createDefaultProducts();
         } catch (PDOException $e) {
             $error_message = "Database Error: " . $e->getMessage() . " | Date/Time: " . date('Y-m-d H:i:s') . "\n";
             $log_file = '../logError/logs.txt';
@@ -157,6 +159,174 @@ class Database
     {
         return $this->conn;
     }
+
+    private function createDefaultProducts()
+    {
+        try {
+            // Check if the products table is empty
+            $stmt = $this->conn->prepare("SELECT COUNT(*) FROM products");
+            $stmt->execute();
+            $count = $stmt->fetchColumn();
+
+            if ($count == 0) {
+                // Insert default products
+                $sql = '
+            INSERT INTO products (name, description, price, stock, category, image_url) 
+            VALUES 
+                ("Artisanal Chocolates", 
+                 "Handcrafted by small-scale chocolatiers who emphasize quality, unique flavors, and ethical sourcing using traditional methods.", 
+                 50.00, 
+                 100, 
+                 "Indulgent Delights", 
+                 "../assets/chocolates.png"),
+
+                ("Special Coffee", 
+                 "Specialty coffee: meticulously sourced, roasted, and brewed, offering unique flavors; 250 grams.", 
+                 150.00, 
+                 0, 
+                 "Indulgent Delights", 
+                 "../assets/coffee.png"), 
+
+                ("Gourmet Snacks", 
+                 "Gourmet snacks: handpicked ingredients, artisanal crafting, delivering exquisite taste; 150g of mixed nuts.", 
+                 100.00, 
+                 200, 
+                 "Indulgent Delights", 
+                 "../assets/snacks.png"), 
+
+                ("Baked Goods", 
+                 "Baked goods: Freshly baked pastries crafted with care, featuring a variety of flavors and textures.", 
+                 120.00, 
+                 150, 
+                 "Indulgent Delights", 
+                 "../assets/baked.png"), 
+
+                ("Artisanal Jam", 
+                 "Artisanal jam: Handmade with ripe, luscious fruits and natural ingredients, bursting with vibrant flavors.", 
+                 90.00, 
+                 120, 
+                 "Indulgent Delights", 
+                 "../assets/jam.png"), 
+
+                ("Premium Alcohol", 
+                 "Premium alcohol: Indulge in rich, complex flavors with our meticulously aged whiskey, perfect for savoring slowly.", 
+                 500.00, 
+                 50, 
+                 "Indulgent Delights", 
+                 "../assets/wine.png"),
+
+                ("Handcrafted Candles", 
+                 "Handcrafted candles: Premium soy wax, infused with essential oils, emitting calming fragrances.", 
+                 120.00, 
+                 50, 
+                 "Handcrafted Luxuries", 
+                 "../assets/candles.png"),
+
+                ("Luxury Bath Products", 
+                 "Luxury bath products: Handcrafted with nourishing ingredients, providing a lavish bathing experience.", 
+                 280.00, 
+                 30, 
+                 "Handcrafted Luxuries", 
+                 "../assets/bath.png"),
+
+                ("Scented Soaps", 
+                 "Scented soaps: Handcrafted with natural oils, leaving skin refreshed and delicately scented.", 
+                 90.00, 
+                 100, 
+                 "Handcrafted Luxuries", 
+                 "../assets/soap.png"),
+
+                ("Miniature Succulents", 
+                 "Miniature succulents: Handpicked varieties, perfect for small spaces, adding greenery to any room.", 
+                 150.00, 
+                 80, 
+                 "Handcrafted Luxuries", 
+                 "../assets/succulent.png"),
+
+                ("Handmade Jewelry", 
+                 "Handmade jewelry: Unique designs, crafted with attention to detail, making each piece special.", 
+                 200.00, 
+                 40, 
+                 "Handcrafted Luxuries", 
+                 "../assets/jewelry.png"),
+
+                ("Organic Skincare", 
+                 "Organic skincare: Handcrafted with natural ingredients, nurturing and rejuvenating skin.", 
+                 180.00, 
+                 60, 
+                 "Handcrafted Luxuries", 
+                 "../assets/skincare.png"),
+
+                ("Handpoured Waxmelts", 
+                 "Handpoured waxmelts: Aromatic blends, created to enhance ambiance and relaxation.", 
+                 75.00, 
+                 120, 
+                 "Handcrafted Luxuries", 
+                 "../assets/waxmelts.png"),
+
+                ("Unique Planter", 
+                 "Unique planter: Handcrafted designs, adding personality to indoor and outdoor spaces.", 
+                 160.00, 
+                 70, 
+                 "Handcrafted Luxuries", 
+                 "../assets/planter.png"),
+
+                ("Personalized Notecards", 
+                 "Custom designs, perfect for adding a personal touch to your messages.", 
+                 50.00, 
+                 100, 
+                 "Personalized Treasures", 
+                 "../assets/notecards.png"),
+
+                ("Custom Stationary", 
+                 "Personalized designs, ideal for expressing your unique style in writing.", 
+                 80.00, 
+                 80, 
+                 "Personalized Treasures", 
+                 "../assets/stationary.png"),
+
+                ("Customized Mugs", 
+                 "Personalized with your favorite photos or quotes, making your mornings brighter.", 
+                 100.00, 
+                 50, 
+                 "Personalized Treasures", 
+                 "../assets/mug.png"),
+
+                ("Customized Phone Case", 
+                 "Personalized protection for your device, reflecting your style and personality.", 
+                 120.00, 
+                 60, 
+                 "Personalized Treasures", 
+                 "../assets/case.png"),
+
+                ("Photo Frame", 
+                 "Elegant designs, perfect for displaying your cherished memories in style.", 
+                 150.00, 
+                 40, 
+                 "Personalized Treasures", 
+                 "../assets/frame.png"),
+
+                ("Engraved Keychains", 
+                 "Personalized with names or messages, perfect for adding a special touch to your keys.", 
+                 70.00, 
+                 120, 
+                 "Personalized Treasures", 
+                 "../assets/keychain.png");
+            ';
+
+                // Execute the SQL query to insert the default products
+                $stmt = $this->conn->prepare($sql);
+                $stmt->execute();
+
+                // echo "Default products added successfully.\n";
+            } else {
+                // echo "Products already exist.\n";
+            }
+        } catch (PDOException $e) {
+            throw new Exception("Failed to insert default products: " . $e->getMessage());
+        }
+    }
+
 }
 
 ?>

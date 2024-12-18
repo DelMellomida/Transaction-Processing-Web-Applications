@@ -25,13 +25,10 @@ include_once("../resources/components/adminHeader.php");
 
     <form method="POST" action="">
         <label for="category">Filter by Category:</label>
-        <select name="category" id="category">
-            <option value="">-- All Categories --</option>
-            <option value="Tea">Tea</option>
-            <option value="Books">Books</option>
-            <option value="Clothing">Clothing</option>
-            <option value="Toys">Toys</option>
-            <option value="Home">Home</option>
+        <select id="category" name="category" required>
+            <option value="Indulgent Delights">Indulgent Delights</option>
+            <option value="Handcrafted Luxuries">Handcrafted Luxuries</option>
+            <option value="Personalized Treasures">Personalized Treasures</option>
         </select>
 
         <button type="submit">Filter</button>
