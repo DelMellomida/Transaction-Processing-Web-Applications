@@ -10,7 +10,7 @@ class AuthController
     {
         $this->auth = new Auth();
     }
-
+// Read Forms Input and Register Accounts, and conditions
     public function register($data)
     {
         $fullname = trim($data['fullname']);
@@ -48,7 +48,7 @@ class AuthController
         exit;
 
     }
-
+// Read Forms Input and Register Accounts, and conditions
     public function login($data)
     {
         $username = trim($data['username']);
@@ -68,7 +68,7 @@ class AuthController
             session_start();
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
-            $_SESSION['role'] = $user['role'];
+            $_SESSION['role'] = $user['role']; //For Role-based acces control Line 76-82
             $_SESSION['user_logged_in'] = true;
 
             $this->auth->updateLoginTime($user['id']);
