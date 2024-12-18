@@ -10,7 +10,7 @@ class AuthController
     {
         $this->auth = new Auth();
     }
-// Read Forms Input and Register Accounts, and conditions
+    // Read Forms Input and Register Accounts, and conditions
     public function register($data)
     {
         $fullname = trim($data['fullname']);
@@ -48,7 +48,7 @@ class AuthController
         exit;
 
     }
-// Read Forms Input and Register Accounts, and conditions
+    // Read Forms Input and Register Accounts, and conditions
     public function login($data)
     {
         $username = trim($data['username']);
@@ -86,6 +86,18 @@ class AuthController
             $this->renderAlert("dangerAlert", $alertMessage);
             return "Incorrect password.";
         }
+    }
+
+    public function getUser()
+    {
+        $user = $this->auth->getUserByUsername($_SESSION['username']);
+        $this->render("editProfile", $user);
+    }
+
+    private function render($view, $data)
+    {
+        extract($data);
+        require_once "../resources/views/{$view}.php";
     }
 
     private function renderAlert($view, $message)
