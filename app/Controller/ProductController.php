@@ -130,6 +130,27 @@ class ProductController
         }
     }
 
+    public function deleteProduct($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            try {
+                $data = [
+                    'id' => $_POST['id'],
+                ];
+
+                $result = $this->product->deleteProduct($data);
+                $this->renderAlert("successAlert", "Successful Update");
+
+
+            } catch (Exception $e) {
+                echo "Error: " . $e->getMessage();
+            }
+        } else {
+            // echo "Invalid request method.";
+            $this->renderAlert("dangerAlert", "Unsuccessful Update");
+        }
+    }
+
     private function render($view, $data)
     {
         extract($data);

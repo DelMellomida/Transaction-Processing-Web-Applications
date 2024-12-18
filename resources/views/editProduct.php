@@ -21,8 +21,13 @@ $message = '';
 $product = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $productController = new ProductController();
-    $productController->editProduct($_POST);
+    if (isset($_POST['action'])) {
+        if ($_POST['action'] === 'delete') {
+            $productController->deleteProduct($_POST);
+        } elseif ($_POST['action'] === 'update') {
+            $productController->editProduct($_POST);
+        }
+    }
 }
 
 ?>
