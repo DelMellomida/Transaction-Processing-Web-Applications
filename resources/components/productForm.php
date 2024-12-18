@@ -1,5 +1,11 @@
 <form action="" method="POST" enctype="multipart/form-data">
     <section class="overview">
+        <?php if (!empty($product['id'])): ?>
+            <input type="hidden" name="id" value="<?= htmlspecialchars($product['id']) ?>">
+            <!-- Hidden input for Existing Image URL -->
+            <input type="hidden" name="existing_image_url" value="<?= htmlspecialchars($product['image_url']) ?>">
+        <?php endif; ?>
+
         <div class="card">
             <h3>Product Name</h3> <br>
             <input type="text" id="name" name="name"
@@ -29,9 +35,16 @@
                 required><?= !empty($product) ? htmlspecialchars($product['description']) : '' ?></textarea>
         </div>
         <div class="card">
-            <label for="image_url">Product Image:</label><br> <br><br>
-            <input type="file" name="image_url" id="image_url" accept="image/*" required>
+            <label for="image_url">Product Image:</label><br><br><br>
+
+            <?php if (!empty($product['image_url'])): ?>
+                <img id="defaultImage" src="<?= htmlspecialchars($product['image_url']) ?>" alt="Product Image"
+                    style="width: 200px; height: auto; display: block; margin-bottom: 10px;" />
+            <?php endif; ?>
+
+            <input type="file" name="image_url" id="image_url" accept="image/*" onchange="previewImage(event)">
         </div>
+
     </section>
     <br><br><button type="submit" class="submit-btn"><?= !empty($product) ? 'Update Product' : 'Add Product' ?></button>
 </form>

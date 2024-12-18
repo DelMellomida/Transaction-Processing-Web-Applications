@@ -18,8 +18,11 @@ if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true 
 $productController = new ProductController();
 $message = '';
 
+$product = [];
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $productController->createProduct($_POST);
+    $productController = new ProductController();
+    $productController->editProduct($_POST);
 }
 
 ?>

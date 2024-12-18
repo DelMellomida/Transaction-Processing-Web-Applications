@@ -89,6 +89,40 @@ class Products
             return null;
         }
     }
+
+    public function editProduct($data)
+    {
+        try {
+            $sql = "
+            UPDATE products
+            SET name = :name,
+                description = :description,
+                price = :price,
+                stock = :stock,
+                category = :category,
+                image_url = :image_url
+            WHERE id = :id
+        ";
+
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([
+                ':id' => $data['id'],
+                ':name' => $data['name'],
+                ':description' => $data['description'],
+                ':price' => $data['price'],
+                ':stock' => $data['stock'],
+                ':category' => $data['category'],
+                ':image_url' => $data['image_url'],
+            ]);
+
+            return true;
+
+        } catch (PDOException $e) {
+            $this->logError($e->getMessage());
+            return false;
+        }
+    }
+
 }
 
 ?>

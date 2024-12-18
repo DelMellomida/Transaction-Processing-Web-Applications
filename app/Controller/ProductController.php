@@ -97,17 +97,49 @@ class ProductController
                 return [];  // Return an empty array instead of null
             }
         } else {
-            echo "No product ID found in the session.";
             return [];
         }
     }
 
+    public function editProduct($data)
+    {
+        // $imagePath = $this->uploadImage($_POST['image_url']);
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            try {
+                $data = [
+                    'id' => $_POST['id'],
+                    'name' => $_POST['name'],
+                    'description' => $_POST['description'],
+                    'price' => $_POST['price'],
+                    'stock' => $_POST['stock'],
+                    'category' => $_POST['category'],
+                    'image_url' => $_POST['existing_image_url'],
+                ];
+
+                $result = $this->product->editProduct($data);
+                $this->renderAlert("successAlert", "Successful Update");
+
+
+            } catch (Exception $e) {
+                echo "Error: " . $e->getMessage();
+            }
+        } else {
+            // echo "Invalid request method.";
+            $this->renderAlert("dangerAlert", "Unsuccessful Update");
+        }
+    }
 
     private function render($view, $data)
     {
         extract($data);
         require_once "../resources/views/{$view}.php";
+    }
+
+    private function renderAlert($view, $message)
+    {
+        $alertMessage = $message;
+        include_once("../resources/components/{$view}.php");
     }
 }
 
