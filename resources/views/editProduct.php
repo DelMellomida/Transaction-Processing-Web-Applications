@@ -15,10 +15,14 @@ if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true 
     exit;
 }
 
+$productController = new ProductController();
 $message = '';
+
+$product = [];
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $productController = new ProductController();
-    $productController->createProduct($_POST);
+    $productController->editProduct($_POST);
 }
 
 ?>
@@ -29,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Product</title>
+    <title>Add Product</title>
     <link rel="stylesheet" href="css/adminStyles.css">
 </head>
 
@@ -37,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php
     require_once __DIR__ . '/../components/adminHeader.php';
 
-
-    require_once __DIR__ . '/../components/editProductForm.php';
+    $product = $productController->getProduct();
+    require_once __DIR__ . '/../components/productForm.php';
     ?>
 </body>
 

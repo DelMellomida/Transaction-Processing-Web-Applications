@@ -27,7 +27,7 @@ class ProductController
                 ];
 
                 $result = $this->product->createProduct($data);
-                echo $result;
+                // echo $result;
 
 
             } catch (Exception $e) {
@@ -78,10 +78,68 @@ class ProductController
         return $products;
     }
 
+    public function getProduct()
+    {
+        if (isset($_SESSION['product_id']) && !empty($_SESSION['product_id'])) {
+            $id = $_SESSION['product_id'];
+
+            try {
+                $productItem = $this->product->getProduct($id);
+
+                if ($productItem && is_array($productItem)) {
+                    $_SESSION['product_id'] = null;  // Clear after fetching
+                    return $productItem;
+                } else {
+                    throw new Exception("Product not found.");
+                }
+            } catch (Exception $e) {
+                echo "Error: " . $e->getMessage();
+                return [];  // Return an empty array instead of null
+            }
+        } else {
+            return [];
+        }
+    }
+
+    public function editProduct($data)
+    {
+        // $imagePath = $this->uploadImage($_POST['image_url']);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            try {
+                $data = [
+                    'id' => $_POST['id'],
+                    'name' => $_POST['name'],
+                    'description' => $_POST['description'],
+                    'price' => $_POST['price'],
+                    'stock' => $_POST['stock'],
+                    'category' => $_POST['category'],
+                    'image_url' => $_POST['existing_image_url'],
+                ];
+
+                $result = $this->product->editProduct($data);
+                $this->renderAlert("successAlert", "Successful Update");
+
+
+            } catch (Exception $e) {
+                echo "Error: " . $e->getMessage();
+            }
+        } else {
+            // echo "Invalid request method.";
+            $this->renderAlert("dangerAlert", "Unsuccessful Update");
+        }
+    }
+
     private function render($view, $data)
     {
         extract($data);
         require_once "../resources/views/{$view}.php";
+    }
+
+    private function renderAlert($view, $message)
+    {
+        $alertMessage = $message;
+        include_once("../resources/components/{$view}.php");
     }
 }
 
