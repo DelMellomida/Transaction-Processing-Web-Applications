@@ -55,6 +55,10 @@ $isLoggedIn = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] 
             include('../resources/views/editProduct.php');
             break;
 
+        case '/userprofile':
+            include('../resources/views/userProfile.php');
+            break;
+
         case '/allproduct':
             require_once("../app/Controller/ProductController.php");
             $controller = new ProductController();

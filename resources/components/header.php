@@ -15,7 +15,7 @@
                         <a><i class="fa-solid fa-cart-shopping"></i></a>
                         <span id="cart-count" class="cart-count">0</span>
                     </li>
-                    <li class="menu-item"><a href="/profile">Profile</a></li>
+                    <li class="menu-item"><a href="/userprofile">Profile</a></li>
                     <li class="menu-item"><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                     </li>
                 <?php else: ?>
