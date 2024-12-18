@@ -37,6 +37,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background-repeat: no-repeat;
             background-position: center;
         }
+
+        .submit-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .submit-btn:active {
+            background-color: #003f7f;
+        }
+
+        .submit-btn.delete {
+            background-color: #dc3545;
+        }
+
+        .submit-btn.delete:hover {
+            background-color: #a71d2a;
+        }
     </style>
 </head>
 

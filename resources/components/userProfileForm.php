@@ -4,7 +4,7 @@
             <div class="profile-header">
                 <img src="/assets/ch1.jpg" alt="User Profile Picture">
                 <h1 style="font-weight: bold;">UNBOX SURPRISE</h1>
-                <p style="font-weight: bold;">Status: Regular User</p>
+                <p style="font-weight: bold;">Status: <?= !empty($user) ? htmlspecialchars($user['role']) : '' ?></p>
                 <!--whahah di ko alam ano maganda dito or remove nalang-->
             </div>
             <div class="profile-details">
