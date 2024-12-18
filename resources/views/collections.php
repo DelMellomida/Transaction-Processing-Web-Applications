@@ -298,6 +298,8 @@ $productController = new ProductController();
             <p>&copy; 2024 Unbox Surprise. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script src="/js/myScript.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>
@@ -327,8 +329,6 @@ $productController = new ProductController();
             });
         });
     </script>
-
-    <script src="/js/myScript.js"></script>
 </body>
 
 </html>
